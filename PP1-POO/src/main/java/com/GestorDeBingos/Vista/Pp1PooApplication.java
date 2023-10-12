@@ -9,3 +9,4 @@ public class MiAplicacionWebApplication {
         SpringApplication.run(MiAplicacionWebApplication.class, args);
     }
 }
+//:)
