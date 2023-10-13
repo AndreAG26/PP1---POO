@@ -33,10 +33,10 @@ public class ConexionDB {
             e.printStackTrace();
         }
     }
-
+    /*
     public static void main(String[] args){
         ConexionDB cx=new ConexionDB();
         cx.conectar();
         cx.desconectar();
-    }
+    }*/
 }
