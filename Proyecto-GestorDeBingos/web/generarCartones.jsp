@@ -17,7 +17,7 @@
             <input type="submit" value="Generar">
         </form>
         <a href="index.jsp">Volver al inicio</a>
-        
+  
         <%
             
             String numCartonesStr = request.getParameter("numCartones");
