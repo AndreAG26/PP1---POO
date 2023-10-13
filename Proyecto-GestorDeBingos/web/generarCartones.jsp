@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@page import="LOGICADENEGOCIOS.Carton"%>
+<%@page import="LOGICADENEGOCIOS.Juego"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,8 +25,8 @@
                 try {
                     int numCartones = Integer.parseInt(numCartonesStr);
                     for(int i = 0; i < numCartones; i++) {
-                        Carton carton = new Carton();
-                        carton.imprimirCarton();
+                        Juego juego = new Juego();
+                        juego.crearCartones(numCartones);
                         }
                     out.println("<p>Cartones generados con éxito.</p>");
                 } catch(NumberFormatException e) {
