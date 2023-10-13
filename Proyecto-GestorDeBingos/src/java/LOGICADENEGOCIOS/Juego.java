@@ -1,4 +1,6 @@
+package LOGICADENEGOCIOS;
 import java.util.*;
+
 
 /**
  * Write a description of class Juego here.
@@ -8,9 +10,11 @@ import java.util.*;
  */
 public class Juego
 {
-    private ArrayList<Carton> Cartones;
+    private String configuracion;
     private Tombola tombola;
-    private ArrayList<Integer> bolitasSacadas; 
+    private ArrayList<Carton> Cartones;
+    private ArrayList<Integer> bolitasSacadas;
+    private static final String CONFIGURACIONES_POSIBLES[]=new String[]{"X", "Cuatro esquinas", "Cartón lleno", "Z"};
     
     
     public Juego()
@@ -18,6 +22,15 @@ public class Juego
         Cartones = new ArrayList<>();
         tombola = new Tombola();
         bolitasSacadas = new ArrayList<>();
+        configuracion= getConfiguracion();
+    }
+    
+    public String getConfiguracion() {
+        return configuracion;
+    }
+
+    public void setConfiguracion(String configuracion) {
+        this.configuracion = configuracion;
     }
     
     public void crearCartones(int n){
@@ -32,6 +45,7 @@ public class Juego
         int bolita = tombola.sacarBolita();
         System.out.println(bolita);
         bolitasSacadas.add(bolita);
+        
     }
     
     public boolean verificarCuatroEsquinas() {

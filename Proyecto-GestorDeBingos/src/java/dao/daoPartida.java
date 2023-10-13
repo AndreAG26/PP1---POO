@@ -5,15 +5,18 @@
 package dao;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
+import java.time.LocalDate;
+import java.time.LocalTime;
 import LOGICADENEGOCIOS.ConexionDB;
-/*import LOGICADENEGOCIOS.Juego;
+import LOGICADENEGOCIOS.Juego;
+
+
 
 /**
  *
  * @author Dell
  */
-/*public class daoPartida {
+public class daoPartida {
     ConexionDB cx;
 
     public daoPartida(){
@@ -22,11 +25,15 @@ import LOGICADENEGOCIOS.ConexionDB;
 
     public boolean insertPartida(Juego juego){
         PreparedStatement ps=null;
+        
+        
+        LocalDate date=LocalDate.now();
+        LocalTime hora= LocalTime.now();
         try {
-            ps=cx.conectar().prepareStatement("INSERT INTO usuario VALUES(null, ?,?,?)");
-            ps.setString(1, jugador.getNombreCompleto());
-            ps.setString(2, jugador.getCorreo());
-            ps.setInt(3, jugador.getCedula());
+            ps=cx.conectar().prepareStatement("INSERT INTO partida VALUES(null, ?,?,?)");
+            ps.setString(1, juego.getConfiguracion());
+            ps.setString(2, date.toString());
+            ps.setString(3, hora.toString());
             ps.executeUpdate();
             cx.desconectar();
             return true;
@@ -34,5 +41,21 @@ import LOGICADENEGOCIOS.ConexionDB;
             e.printStackTrace();
             return false;
         }
+    }
         
-}*/
+    /**
+     *
+     * @param args
+     */
+    /*public static void main(String[] args){
+        Juego partida= new Juego();
+        daoPartida dao = new daoPartida();
+        partida.setConfiguracion("Cartón lleno");
+        if (dao.insertPartida(partida)){
+            System.out.println("Inserción exitosa");
+        }else{
+            System.out.println("ERROR");
+        }
+    }*/
+        
+}
