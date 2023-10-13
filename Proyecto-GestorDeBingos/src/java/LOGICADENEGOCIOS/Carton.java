@@ -1,3 +1,5 @@
+package LOGICADENEGOCIOS;
+
 import java.util.*;
 import java.awt.image.BufferedImage;
 import java.awt.Color;
@@ -15,14 +17,14 @@ import javax.imageio.ImageIO;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Carton
+public final class Carton
 {
-    private String idCarton;
-    private ArrayList<Integer> filaB;
-    private ArrayList<Integer> filaI;
-    private ArrayList<Integer> filaN;
-    private ArrayList<Integer> filaG;
-    private ArrayList<Integer> filaO;
+    private final String idCarton;
+    private final ArrayList<Integer> filaB;
+    private final ArrayList<Integer> filaI;
+    private final ArrayList<Integer> filaN;
+    private final ArrayList<Integer> filaG;
+    private final ArrayList<Integer> filaO;
     
     public Carton() {
         idCarton = generarIdentificador() ;
@@ -206,7 +208,6 @@ public class Carton
         try {
             ImageIO.write(image, "jpg", new File(ID + ".jpg"));
         } catch (IOException e) {
-            e.printStackTrace();
         }
 
         g.dispose();

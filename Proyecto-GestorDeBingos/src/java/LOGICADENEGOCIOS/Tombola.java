@@ -1,3 +1,5 @@
+package LOGICADENEGOCIOS;
+
 import java.util.*;
 import java.util.Random;
 /**
@@ -8,7 +10,7 @@ import java.util.Random;
  */
 public class Tombola
 {
-    private   ArrayList<Integer> bolitas; 
+    private final   ArrayList<Integer> bolitas; 
     private Random random = new Random();
 
     /**
@@ -23,7 +25,6 @@ public class Tombola
     /**
      * An example of a method - replace this comment with your own
      * 
-     * @param  y   a sample parameter for a method
      * @return     the sum of x and y 
      */
     public void rellenarTombola()
