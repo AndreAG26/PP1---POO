@@ -17,7 +17,7 @@ public class ConexionDB {
     public Connection conectar(){
         try {
             Class.forName("org.sqlite.JDBC");
-            cx=DriverManager.getConnection("jdbc:sqlite:Gestor de bingos_DB.sqbpro", null, null);
+            cx=DriverManager.getConnection("jdbc:sqlite:BingoDB.db", null, null);
             System.out.println("Conexión exitosa");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
