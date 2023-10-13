@@ -40,6 +40,15 @@ public class Main
         System.out.println("Fila G: " + filaG);
         System.out.println("Fila O: " + filaO);
         
-        carton.imprimirCarton();
+        Juego juego = new Juego();
+        
+        juego.crearCartones(8);
+        
+        while(!juego.verificarCuatroEsquinas()){
+            juego.sacarBolita();
+        }
+        
+        System.out.println("Hay ganador");
+       
     }
 }
