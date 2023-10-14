@@ -15,6 +15,12 @@ public class Jugador {
     public Jugador(){
        
     }
+    
+    public Jugador(int cedula, String nombre, String correo){
+       setCedula(cedula);
+       setNombreCompleto(nombre);
+       setCorreo(correo);
+    }
 
     public int getCedula() {
         return cedula;

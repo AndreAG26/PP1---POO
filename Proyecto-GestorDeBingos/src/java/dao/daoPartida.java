@@ -23,15 +23,15 @@ public class daoPartida {
         cx=new ConexionDB();
     }
 
-    public boolean insertPartida(Juego juego){
+    public boolean insertPartida(Juego configuracion){
         PreparedStatement ps=null;
-        
         
         LocalDate date=LocalDate.now();
         LocalTime hora= LocalTime.now();
+        
         try {
             ps=cx.conectar().prepareStatement("INSERT INTO partida VALUES(null, ?,?,?)");
-            ps.setString(1, juego.getConfiguracion());
+            ps.setString(1, configuracion.getConfiguracion());
             ps.setString(2, date.toString());
             ps.setString(3, hora.toString());
             ps.executeUpdate();

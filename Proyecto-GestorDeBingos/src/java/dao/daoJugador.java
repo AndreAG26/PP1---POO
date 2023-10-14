@@ -7,6 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
 
 import LOGICADENEGOCIOS.ConexionDB;
 import LOGICADENEGOCIOS.Jugador;
@@ -55,6 +57,53 @@ public class daoJugador {
             return false;
         }
     }
+    
+    public List<Jugador> cargarJugadores() {
+        List<Jugador> jugadores = new ArrayList<>();
+
+        Connection connection = null;
+        PreparedStatement ps = null;
+        ResultSet resultSet = null;
+
+        try {
+            
+            connection = cx.conectar(); 
+
+            String query = "SELECT * FROM jugador";
+            ps = connection.prepareStatement(query);
+            resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+                String nombreCompleto = resultSet.getString("nombrecompleto");
+                String correo = resultSet.getString("correo");
+                int cedula = resultSet.getInt("cédula");
+
+                Jugador jugador = new Jugador(cedula, nombreCompleto, correo);
+                jugadores.add(jugador);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Maneja el error adecuadamente
+        } finally {
+            // Cierra los recursos (ResultSet, PreparedStatement y Connection) en orden inverso
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return jugadores;
+    }
+    
     /*
     public static void main(String[] args){
         Jugador jugador= new Jugador();
@@ -68,4 +117,5 @@ public class daoJugador {
             System.out.println("ERROR");
         }
     }*/
+    
 }

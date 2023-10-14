@@ -32,40 +32,52 @@ public class numerosCantados {
     }
 
     public boolean insertNumero(int numeroBolita){
+        
         Connection connection = null;
+        PreparedStatement ps = null;
+        
         try {
-            connection = cx.conectar();
             // Obtener el ID del último dato insertado
             int idPartida;
-            PreparedStatement idPartidaActual = connection.prepareStatement("SELECT idPartida FROM partida ORDER BY idPartida DESC LIMIT 1");
-            
-            try (ResultSet resultSet = idPartidaActual.executeQuery()) {
-                if (resultSet.next()) {
-                    idPartida = resultSet.getInt(1);
-                } else {
-                    // No se pudo obtener el ID, maneja el error aquí
-                    System.out.println("No se pudo obtener el ID de la partida insertada.");
-                    return false;
-                }
+            connection = cx.conectar();
+            String query = "SELECT idPartida FROM partida ORDER BY idPartida DESC LIMIT 1";
+            ps = connection.prepareStatement(query);
+            ResultSet resultSet = ps.executeQuery();
+
+            if (resultSet.next()) {
+                idPartida = resultSet.getInt("idPartida");
+            } else {
+                // No se pudo obtener el ID, maneja el error aquí
+                System.out.println("No se pudo obtener el ID de la partida insertada.");
+                return false;
             }
-            
-            // Insertar el ID en la tabla 'numerosCantados'
-            PreparedStatement insertNumerosCantadosStatement = connection.prepareStatement("INSERT INTO numerosCantados (idPartida, numero) VALUES (?, ?)");
-            insertNumerosCantadosStatement.setInt(1, idPartida);
-            insertNumerosCantadosStatement.setInt(2, numeroBolita); 
-            insertNumerosCantadosStatement.executeUpdate();
+
+            // Insertar el ganador
+            query = "INSERT INTO numerosCantados (idPartida, numero) VALUES (?, ?)";
+            ps = connection.prepareStatement(query);
+            ps.setInt(1, idPartida);
+            ps.setInt(2, numeroBolita);
+            ps.executeUpdate();
             cx.desconectar();
             return true;
-            
-        }   catch (SQLException ex) {
-            Logger.getLogger(numerosCantados.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            e.printStackTrace();
             return false;
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-        
     }
     
     /*public static void main(String[] args){
-        Tombola bolita= new Tombola();
         numerosCantados dao= new numerosCantados();
         int numBolita=75;
         if (dao.insertNumero(numBolita)){
@@ -74,6 +86,5 @@ public class numerosCantados {
             System.out.println("ERROR");
         }
     }*/
-        
-        
 }
+     
