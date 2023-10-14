@@ -4,6 +4,8 @@
  */
 package proyecto1.bingo;
 
+
+
 /**
  *
  * @author Daniel
@@ -29,13 +31,16 @@ public class index extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        generarCartones = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
+        verCarton = new javax.swing.JMenuItem();
+        IniciarJuego = new javax.swing.JMenu();
+        EnviarCarton = new javax.swing.JMenu();
+        estadisticas = new javax.swing.JMenu();
+        wordCloud = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -43,25 +48,44 @@ public class index extends javax.swing.JFrame {
 
         jMenu2.setText("jMenu2");
 
+        jMenu3.setText("jMenu3");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Gestor de Bingos");
 
-        jMenu3.setText("Cartones");
-
-        jMenuItem3.setText("Ver cartones");
-        jMenu3.add(jMenuItem3);
+        generarCartones.setText("Cartones");
 
         jMenuItem4.setText("Generar cartones");
-        jMenu3.add(jMenuItem4);
+        generarCartones.add(jMenuItem4);
 
-        jMenuBar1.add(jMenu3);
+        verCarton.setText("Ver cartones");
+        verCarton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verCartonActionPerformed(evt);
+            }
+        });
+        generarCartones.add(verCarton);
 
-        jMenu4.setText("Iniciar juego");
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(generarCartones);
 
-        jMenu5.setText("Enviar Cartón");
-        jMenuBar1.add(jMenu5);
+        IniciarJuego.setText("Iniciar juego");
+        jMenuBar1.add(IniciarJuego);
+
+        EnviarCarton.setText("Enviar Cartón");
+        EnviarCarton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EnviarCartonActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(EnviarCarton);
+
+        estadisticas.setText("Estadísticas");
+        jMenuBar1.add(estadisticas);
+
+        wordCloud.setText("WordCloud");
+        jMenuBar1.add(wordCloud);
 
         setJMenuBar(jMenuBar1);
 
@@ -69,20 +93,34 @@ public class index extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 299, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(118, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(143, 143, 143))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 261, Short.MAX_VALUE)
-                .addComponent(jLabel1))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(116, 116, 116)
+                .addComponent(jLabel1)
+                .addContainerGap(136, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void verCartonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verCartonActionPerformed
+        verCarton verCartonesForm = new verCarton();
+        verCartonesForm.setVisible(true);
+        this.dispose();  
+    }//GEN-LAST:event_verCartonActionPerformed
+
+    private void EnviarCartonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnviarCartonActionPerformed
+        enviarCartones formEnviarCartones=new enviarCartones();
+        formEnviarCartones.setVisible(true); 
+        this.dispose();
+    }//GEN-LAST:event_EnviarCartonActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -119,15 +157,18 @@ public class index extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu EnviarCarton;
+    private javax.swing.JMenu IniciarJuego;
+    private javax.swing.JMenu estadisticas;
+    private javax.swing.JMenu generarCartones;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem verCarton;
+    private javax.swing.JMenu wordCloud;
     // End of variables declaration//GEN-END:variables
 }
