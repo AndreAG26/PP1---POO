@@ -206,7 +206,7 @@ public final class Carton
         g.drawString(ID, 228, 650);
         
         try {
-            ImageIO.write(image, "jpg", new File("C:/Users/Dell/Documents/GitHub/PP1---POO/Proyecto-GestorDeBingos/src/java/LOGICADENEGOCIOS/Cartones/" + ID + ".jpg"));
+            ImageIO.write(image, "jpg", new File("C:/Users/Daniel/Documents/GitHub/PP1---POO/Proyecto-GestorDeBingos/src/java/LOGICADENEGOCIOS/Cartones/" + ID + ".jpg"));
         } catch (IOException e) {
         }
 
@@ -237,10 +237,9 @@ public final class Carton
         return idCarton;
     }
     
+    
 
 }
-
-
 
 
 

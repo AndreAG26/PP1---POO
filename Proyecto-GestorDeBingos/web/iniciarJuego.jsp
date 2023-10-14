@@ -9,6 +9,7 @@
 <body>
     <div class="container">
         <h2>Iniciar Juego de Bingo</h2>
+        <li><a href="generarCartones.jsp">Generar Cartones</a></li>
         <form action="IniciarJuegoServlet" method="post">
             <label for="configuracion">Configuración de Juego:</label>
             <select id="configuracion" name="configuracion" required>

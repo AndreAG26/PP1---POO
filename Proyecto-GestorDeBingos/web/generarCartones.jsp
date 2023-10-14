@@ -19,16 +19,14 @@
         <a href="index.jsp">Volver al inicio</a>
   
         <%
-            
             String numCartonesStr = request.getParameter("numCartones");
             if(numCartonesStr != null && !numCartonesStr.isEmpty()) {
                 try {
                     int numCartones = Integer.parseInt(numCartonesStr);
-                    for(int i = 0; i < numCartones; i++) {
-                        Juego juego = new Juego();
-                        juego.crearCartones(numCartones);
-                        }
-                    out.println("<p>Cartones generados con éxito.</p>");
+                    Juego nuevoJuego = new Juego(); 
+                    nuevoJuego.crearCartones(numCartones);
+                    // Redirigir al usuario a iniciarJuego.jsp
+                    response.sendRedirect("iniciarJuego.jsp");
                 } catch(NumberFormatException e) {
                     out.println("<p>Error: Debe ingresar un número válido.</p>");
                 } catch(Exception e) {
@@ -39,4 +37,5 @@
     </div>
 </body>
 </html>
+
 
