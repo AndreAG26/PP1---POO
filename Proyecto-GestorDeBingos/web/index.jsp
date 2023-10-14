@@ -13,10 +13,10 @@
         <h1>Bienvenido al Bingo Virtual</h1>
         <p>Selecciona una opción:</p>
         <ul>
-            <li><a href="generarCartones.jsp">Generar Cartones</a></li>
+            
             <li><a href="registrarJugador.jsp">Registrar Jugador</a></li>
             <li><a href="enviarCarton.jsp">Enviar Cartón a Jugador</a></li>
-            <li><a href="iniciarJuego.jsp">Iniciar Juego de Bingo</a></li>
+            <li><a href="generarCartones.jsp">Iniciar Juego de Bingo</a></li>
         </ul>
     </div>
 </body>

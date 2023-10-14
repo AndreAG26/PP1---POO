@@ -4,6 +4,8 @@
  */
 package LOGICADENEGOCIOS;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Dell
@@ -11,11 +13,12 @@ package LOGICADENEGOCIOS;
 public class Jugador {
     int cedula;
     String nombreCompleto, correo;
+    private ArrayList<Carton> Cartones;
 
     public Jugador(){
        
     }
-
+    
     public int getCedula() {
         return cedula;
     }

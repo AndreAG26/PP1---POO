@@ -58,53 +58,25 @@ public class CuentaCorreo{
     return sesion;
   }
   
-    /**
-   * Envia un correo electrónico sin archivos adjuntos.
-   * 
-   * @param destinatario El correo electrónico del destinatario.
-   * @param tituloCorreo El asunto del correo electrónico.
-   * @param cuerpo El cuerpo del mensaje del correo electrónico.
-   */
-  public void enviarCorreo(String destinatario, String tituloCorreo, String cuerpo){
-    Session sesion = abrirSesion();
-    
-    try{
-      Message message = new MimeMessage(sesion);
-      message.setFrom(new InternetAddress(usuario));
-      message.setRecipients(
-        Message.RecipientType.TO,
-        InternetAddress.parse(destinatario)
-      );
-      message.setSubject(tituloCorreo);
-      message.setText(cuerpo);
-      Transport.send(message);
-    }
-    catch(MessagingException e){
-      e.printStackTrace();
-    }
-  }
-  
    /**
    * Envia un correo electrónico con archivos adjuntos.
    * 
    * @param destinatario El correo electrónico del destinatario.
-   * @param tituloCorreo El asunto del correo electrónico.
-   * @param cuerpo El cuerpo del mensaje del correo electrónico.
    * @param archivosAdjuntos Un array de Strings que contiene las rutas de los archivos a adjuntar.
    * @throws java.io.IOException Si ocurre un error al adjuntar los archivos.
    */
-  public void enviarCorreo(String destinatario, String tituloCorreo, String cuerpo, String[] archivosAdjuntos) throws java.io.IOException {
+  public void enviarCorreo(String destinatario, String[] archivosAdjuntos) throws java.io.IOException {
     Session sesion = abrirSesion();
 
     try {
         Message message = new MimeMessage(sesion);
         message.setFrom(new InternetAddress(usuario));
         message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(destinatario));
-        message.setSubject(tituloCorreo);
+        message.setSubject("Cartones del bingo");
 
         // Cuerpo del mensaje
         MimeBodyPart mensajeBodyPart = new MimeBodyPart();
-        mensajeBodyPart.setText(cuerpo);
+        mensajeBodyPart.setText("");
 
         // Crear una lista de partes del mensaje para los archivos adjuntos
         Multipart multipart = new MimeMultipart();
