@@ -19,12 +19,18 @@ import javax.imageio.ImageIO;
  */
 public final class Carton
 {
-    private final String idCarton;
-    private final ArrayList<Integer> filaB;
-    private final ArrayList<Integer> filaI;
-    private final ArrayList<Integer> filaN;
-    private final ArrayList<Integer> filaG;
-    private final ArrayList<Integer> filaO;
+    private String idCarton;
+    private ArrayList<Integer> filaB;
+    private ArrayList<Integer> filaI;
+    private ArrayList<Integer> filaN;
+    private ArrayList<Integer> filaG;
+    private ArrayList<Integer> filaO;
+    private EstadoCarton estado; // Campo de estado como una enumeración
+
+    // Enumeración para los estados posibles
+    public enum EstadoCarton {
+        RESERVADO, LIBRE
+    }
     
     public Carton() {
         idCarton = generarIdentificador() ;
@@ -39,6 +45,8 @@ public final class Carton
         rellenarFilaN();
         rellenarFilaG();
         rellenarFilaO();
+        
+        estado = EstadoCarton.LIBRE;
     }
     
     public void rellenarFilaB() {
@@ -206,8 +214,9 @@ public final class Carton
         g.drawString(ID, 228, 650);
         
         try {
-            ImageIO.write(image, "jpg", new File("C:/Users/Daniel/Documents/GitHub/PP1---POO/Proyecto-GestorDeBingos/src/java/LOGICADENEGOCIOS/Cartones/" + ID + ".jpg"));
+            ImageIO.write(image, "jpg", new File("C:/Users/Dell/Documents/Proyecto1/Cartones/"+ ID + ".jpg"));
         } catch (IOException e) {
+            e.printStackTrace();
         }
 
         g.dispose();
@@ -237,7 +246,13 @@ public final class Carton
         return idCarton;
     }
     
-    
+    public EstadoCarton getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadoCarton estado) {
+        this.estado = estado;
+    }
 
 }
 

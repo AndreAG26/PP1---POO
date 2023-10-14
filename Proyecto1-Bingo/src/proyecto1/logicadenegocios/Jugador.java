@@ -11,21 +11,31 @@ import java.util.ArrayList;
  * @author Dell
  */
 public class Jugador {
-    int cedula;
-    String nombreCompleto, correo;
-    private ArrayList<Carton> Cartones;
+    private Integer cedula;
+    private String nombreCompleto, correo;
+    private ArrayList<Carton> cartones;
 
-    public Jugador(){
-       
+    public Jugador(Integer pCedula, String pNombreCompleto, String pCorreo){
+        setCedula(pCedula);
+        setNombreCompleto(pNombreCompleto);
+        setCorreo(pCorreo);
+        cartones = new ArrayList<>();
     }
     
-
-    public Jugador(int cedula, String nombre, String correo){
-       setCedula(cedula);
-       setNombreCompleto(nombre);
-       setCorreo(correo);
+     public void agregarCarton(Carton carton) {
+        cartones.add(carton);
     }
+    
+    public ArrayList<String> obtenerIDCartones() {
+        ArrayList<String> IDs = new ArrayList<>();
 
+        for (Carton carton : cartones) {
+            IDs.add(carton.getID());
+        }
+
+        return IDs;
+    }
+    
     public int getCedula() {
         return cedula;
     }
@@ -48,5 +58,14 @@ public class Jugador {
 
     public void setCorreo(String correo) {
         this.correo = correo;
+    }
+    
+    public boolean tieneCartonConID(String idCartonGanador) {
+        for (Carton carton : cartones) {
+            if (carton.getID().equals(idCartonGanador)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

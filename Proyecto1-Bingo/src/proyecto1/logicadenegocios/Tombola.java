@@ -19,7 +19,7 @@ public class Tombola
     public Tombola()
     {
         bolitas = new ArrayList();
-        random = new Random();
+        rellenarTombola();
     }
 
     /**
@@ -35,6 +35,7 @@ public class Tombola
     }
     
     public int sacarBolita(){
+         random = new Random();
          if (!bolitas.isEmpty()) {
             int indiceAleatorio = random.nextInt(bolitas.size());
             int numeroAleatorio = bolitas.get(indiceAleatorio);

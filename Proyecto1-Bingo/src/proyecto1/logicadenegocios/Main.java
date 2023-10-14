@@ -10,45 +10,42 @@ import java.util.*;
 public class Main
 {
     public static void main(String[] args) {
-        Tombola tombola = new Tombola();
-        tombola.rellenarTombola();
-        Carton carton = new Carton();
-        
-        System.out.println("Cantidad de bolitas en la tombola: " + tombola.cantidadDeBolitas());
-        
-        int numeroSacado = tombola.sacarBolita();
-        System.out.println("Número sacado de la tómbola: " + numeroSacado);
-        
-        System.out.println("Cantidad de bolitas en la tombola: " + tombola.cantidadDeBolitas());
-        
-        numeroSacado = tombola.sacarBolita();
-        System.out.println("Número sacado de la tómbola: " + numeroSacado);
-        
-        System.out.println("Cantidad de bolitas en la tombola: " + tombola.cantidadDeBolitas());
-        
-        // Llena las filas automáticamente en el constructor
-        ArrayList<Integer> filaB = carton.getFilaB();
-        ArrayList<Integer> filaI = carton.getFilaI();
-        ArrayList<Integer> filaN = carton.getFilaN();
-        ArrayList<Integer> filaG = carton.getFilaG();
-        ArrayList<Integer> filaO = carton.getFilaO();
-
-        System.out.println("Cartón creado:");
-        System.out.println("Fila B: " + filaB);
-        System.out.println("Fila I: " + filaI);
-        System.out.println("Fila N: " + filaN);
-        System.out.println("Fila G: " + filaG);
-        System.out.println("Fila O: " + filaO);
-        
         Juego juego = new Juego();
         
-        juego.crearCartones(8);
+        Tombola tombola = new Tombola();
+        tombola.rellenarTombola();
+        int numero = tombola.sacarBolita();
+        System.out.println(numero);
         
-        while(!juego.verificarCuatroEsquinas()){
-            juego.sacarBolita();
+        
+        juego.crearJugador(117870118,"Joustin", "Joustin1@gmail.com");
+        juego.crearJugador(217870118,"Juan", "Juan1@gmail.com");
+        
+        
+        
+        juego.crearCartones(10);
+    
+        
+        juego.asignarCartonesAJugador(117870118, 3);
+        juego.asignarCartonesAJugador(217870118, 2);
+        
+         for (Jugador jugador : juego.getJugadores()) {
+            System.out.println("Nombre del jugador: " + jugador.getNombreCompleto());
+            ArrayList<String> IDsCartones = jugador.obtenerIDCartones();
+            System.out.println("ID de los cartones del jugador:");
+            for (String ID : IDsCartones) {
+                System.out.println(ID);
+            }
+            System.out.println();
         }
-        
-        System.out.println("Hay ganador");
+        String idCartonGanador = juego.jugarHastaCuatroEsquinas();
+        Jugador jugadorGanador = juego.encontrarJugadorPorIDCarton(idCartonGanador);
+
+        if (jugadorGanador != null) {
+            System.out.println("¡El ganador es " + jugadorGanador.getNombreCompleto() + "!");}
+        else {
+            System.out.println("El Carton no esta asigado");
+        }   
        
     }
     
