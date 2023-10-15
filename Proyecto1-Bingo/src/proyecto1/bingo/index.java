@@ -4,6 +4,9 @@
  */
 package proyecto1.bingo;
 
+import java.io.File;
+import javax.swing.JOptionPane;
+
 
 
 /**
@@ -40,9 +43,10 @@ public class index extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         verCarton = new javax.swing.JMenuItem();
         IniciarJuego = new javax.swing.JMenu();
-        EnviarCarton = new javax.swing.JMenu();
         estadisticas = new javax.swing.JMenu();
         wordCloud = new javax.swing.JMenu();
+        BTNregistrarJugador = new javax.swing.JMenu();
+        registrar = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -65,6 +69,11 @@ public class index extends javax.swing.JFrame {
         });
 
         generarCartones.setText("Cartones");
+        generarCartones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                generarCartonesActionPerformed(evt);
+            }
+        });
 
         jMenuItem4.setText("Generar cartones");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
@@ -85,19 +94,28 @@ public class index extends javax.swing.JFrame {
         jMenuBar1.add(generarCartones);
         jMenuBar1.add(IniciarJuego);
 
-        EnviarCarton.setText("Enviar Cartón");
-        EnviarCarton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EnviarCartonActionPerformed(evt);
-            }
-        });
-        jMenuBar1.add(EnviarCarton);
-
         estadisticas.setText("Estadísticas");
         jMenuBar1.add(estadisticas);
 
         wordCloud.setText("WordCloud");
         jMenuBar1.add(wordCloud);
+
+        BTNregistrarJugador.setText("Jugador");
+        BTNregistrarJugador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNregistrarJugadorActionPerformed(evt);
+            }
+        });
+
+        registrar.setText("Registar");
+        registrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrarActionPerformed(evt);
+            }
+        });
+        BTNregistrarJugador.add(registrar);
+
+        jMenuBar1.add(BTNregistrarJugador);
 
         setJMenuBar(jMenuBar1);
 
@@ -105,23 +123,24 @@ public class index extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(118, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(143, 143, 143))
             .addGroup(layout.createSequentialGroup()
-                .addGap(145, 145, 145)
-                .addComponent(IniciarJuegoBT)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(107, 107, 107)
+                        .addComponent(IniciarJuegoBT))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addComponent(jLabel1)))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(75, 75, 75)
+                .addGap(76, 76, 76)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
                 .addComponent(IniciarJuegoBT)
-                .addGap(95, 95, 95))
+                .addContainerGap(121, Short.MAX_VALUE))
         );
 
         pack();
@@ -130,17 +149,21 @@ public class index extends javax.swing.JFrame {
     private void verCartonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verCartonActionPerformed
         verCarton verCartonesForm = new verCarton();
         verCartonesForm.setVisible(true);
-        this.dispose();  
+        this.setVisible(false);  
     }//GEN-LAST:event_verCartonActionPerformed
 
-    private void EnviarCartonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EnviarCartonActionPerformed
-        enviarCartones formEnviarCartones=new enviarCartones();
-        formEnviarCartones.setVisible(true); 
-        this.dispose();
-    }//GEN-LAST:event_EnviarCartonActionPerformed
-
     private void IniciarJuegoBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IniciarJuegoBTActionPerformed
-        IniciarJuego.setEnabled(false);
+        File carpeta = new File("C:/Users/Daniel/Documents/GitHub/PP1---POO/Proyecto1-Bingo/src/Cartones/");
+        if (carpeta.isDirectory() && carpeta.list().length > 0) {
+            // La carpeta no está vacía
+            IniciarJuegoJFrame juegoNuevo = new IniciarJuegoJFrame();
+            juegoNuevo.setVisible(true);
+            this.setVisible(false);  
+            IniciarJuego.setEnabled(false);
+        } else {
+            // La carpeta está vacía o no existe
+            JOptionPane.showMessageDialog(this, "No existen cartones generados.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_IniciarJuegoBTActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
@@ -148,6 +171,20 @@ public class index extends javax.swing.JFrame {
         a.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void BTNregistrarJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNregistrarJugadorActionPerformed
+        
+    }//GEN-LAST:event_BTNregistrarJugadorActionPerformed
+
+    private void registrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarActionPerformed
+        registrarJugador a = new registrarJugador();
+        a.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_registrarActionPerformed
+
+    private void generarCartonesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarCartonesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_generarCartonesActionPerformed
     
     /**
      * @param args the command line arguments
@@ -185,7 +222,7 @@ public class index extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu EnviarCarton;
+    private javax.swing.JMenu BTNregistrarJugador;
     private javax.swing.JMenu IniciarJuego;
     private javax.swing.JButton IniciarJuegoBT;
     private javax.swing.JMenu estadisticas;
@@ -198,6 +235,7 @@ public class index extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JMenuItem registrar;
     private javax.swing.JMenuItem verCarton;
     private javax.swing.JMenu wordCloud;
     // End of variables declaration//GEN-END:variables

@@ -11,7 +11,7 @@ import proyecto1.logicadenegocios.Juego;
  * @author Daniel
  */
 public class GenerarCartones extends javax.swing.JFrame {
-    Juego juego=new Juego();
+    
     /**
      * Creates new form IniciarJuego
      */
@@ -113,6 +113,7 @@ public class GenerarCartones extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int cantCartones= Integer.parseInt(cartonesAGenerar.getText());
+        Juego juego=new Juego();
         juego.crearCartones(cantCartones);
     }//GEN-LAST:event_jButton1ActionPerformed
 

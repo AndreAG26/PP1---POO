@@ -214,7 +214,7 @@ public final class Carton
         g.drawString(ID, 228, 650);
         
         try {
-            ImageIO.write(image, "jpg", new File("C:/Users/Dell/Documents/Proyecto1/Cartones/"+ ID + ".jpg"));
+            ImageIO.write(image, "jpg", new File("C:/Users/Daniel/Documents/GitHub/PP1---POO/Proyecto1-Bingo/src/Cartones/"+ ID + ".jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }

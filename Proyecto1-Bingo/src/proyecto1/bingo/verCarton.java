@@ -4,6 +4,14 @@
  */
 package proyecto1.bingo;
 
+import java.awt.BorderLayout;
+import java.awt.Image;
+import java.io.File;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Daniel
@@ -26,6 +34,7 @@ public class verCarton extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jComboBox2 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
@@ -35,6 +44,8 @@ public class verCarton extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         panel1 = new java.awt.Panel();
 
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -43,10 +54,25 @@ public class verCarton extends javax.swing.JFrame {
         jLabel2.setText("Digite el codigo del cartón que desea ver:");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Ver");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Regresar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Pertene a:");
 
@@ -120,6 +146,75 @@ public class verCarton extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        index volver = new index();
+        volver.setVisible(true);
+        this.setVisible(false);        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // 1. Obtener el ID seleccionado del JComboBox
+        String idSeleccionado = (String) jComboBox1.getSelectedItem();
+
+        // 2. Construir la ruta completa de la imagen
+        String rutaImagen = "C:/Users/Daniel/Documents/GitHub/PP1---POO/Proyecto1-Bingo/src/Cartones/" + idSeleccionado + ".jpg";
+
+        // 3. Cargar y mostrar la imagen en el Panel
+        try {
+            // Cargar la imagen desde la ruta especificada
+            ImageIcon iconoImagen = new ImageIcon(rutaImagen);
+
+            // Ajustar tamaño de la imagen al tamaño del panel
+            Image imagen = iconoImagen.getImage().getScaledInstance(panel1.getWidth(), panel1.getHeight(), Image.SCALE_SMOOTH);
+
+            // Crear un JLabel para mostrar la imagen
+            JLabel labelImagen = new JLabel(new ImageIcon(imagen));
+
+            // Limpiar el panel antes de agregar la nueva imagen
+            panel1.removeAll();
+            panel1.setLayout(new BorderLayout());
+
+            // Agregar el JLabel con la imagen al Panel
+            panel1.add(labelImagen, BorderLayout.CENTER);
+
+            // Validar y repintar el panel para asegurarse de que la imagen se muestre correctamente
+            panel1.validate();
+            panel1.repaint();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al cargar la imagen.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        cargarIDsEnComboBox();        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    
+    
+    private void cargarIDsEnComboBox() {
+        // 1. Acceder a la carpeta y listar sus archivos
+        File carpeta = new File("/Users/Daniel/Documents/GitHub/PP1---POO/Proyecto1-Bingo/src/Cartones/");
+        File[] archivos = carpeta.listFiles((dir, name) -> name.toLowerCase().endsWith(".jpg"));
+
+        // 2. y 3. Filtrar y extraer el nombre del archivo
+        DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>();
+        for (File archivo : archivos) {
+            String nombre = archivo.getName();
+            String id = nombre.substring(0, nombre.lastIndexOf('.')); // Eliminar la extensión .jpg
+            modelo.addElement(id);
+        }
+
+        // 4. Agregar cada ID al JComboBox
+        jComboBox1.setModel(modelo);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -159,6 +254,7 @@ public class verCarton extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -34,8 +34,9 @@ public class Juego
     }
     
     public void crearJugador(int pCedula, String pNombreCompleto, String pCorreo){
-        Jugador nuevoJugador = new Jugador(pCedula, pNombreCompleto, pCorreo); 
-        insertJugador(nuevoJugador);
+        Jugador nuevoJugador = new Jugador(pCedula, pNombreCompleto, pCorreo);
+        daoJugador nuevo=new daoJugador();
+        nuevo.insertJugador(nuevoJugador);
         Jugadores.add(nuevoJugador);
     }
     

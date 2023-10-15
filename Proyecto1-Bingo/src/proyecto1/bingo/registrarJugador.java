@@ -15,7 +15,7 @@ import proyecto1.dao.daoJugador;
  * @author Daniel
  */
 public class registrarJugador extends javax.swing.JFrame {
-    daoJugador dao = new daoJugador();
+    
     /**
      * Creates new form registrarJugador
      */
@@ -129,6 +129,7 @@ public class registrarJugador extends javax.swing.JFrame {
 
     private void registrarJugadorBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarJugadorBTActionPerformed
         // TODO add your handling code here:7
+        daoJugador dao = new daoJugador();
         String nombre= nomJugador.getText();
         String correo= correoJugador.getText();
         int cedula=Integer.parseInt(cedJugador.getText());
@@ -137,6 +138,7 @@ public class registrarJugador extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Error: No pueden haber espacios vacíos.");
                 return;
             }
+            
             Jugador jugador= new Jugador(cedula, nombre, correo);
             
             if(dao.insertJugador(jugador)){
@@ -177,14 +179,15 @@ public class registrarJugador extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(registrarJugador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GenerarCartones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(registrarJugador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GenerarCartones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(registrarJugador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GenerarCartones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(registrarJugador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GenerarCartones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
