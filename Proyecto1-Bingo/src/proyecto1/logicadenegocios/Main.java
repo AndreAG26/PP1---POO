@@ -1,4 +1,5 @@
 package proyecto1.logicadenegocios;
+import proyecto1.bingo.GenerarCartones;
 
 import java.util.*;
 /**
@@ -9,7 +10,7 @@ import java.util.*;
  */
 public class Main
 {
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         Juego juego = new Juego();
         
         Tombola tombola = new Tombola();
@@ -47,6 +48,11 @@ public class Main
             System.out.println("El Carton no esta asigado");
         }   
        
+    }*/
+    public static void main(String[] args) {
+        GenerarCartones juego= new GenerarCartones();
+        juego.setVisible(true);
+        juego.setLocationRelativeTo(null);
     }
     
 }

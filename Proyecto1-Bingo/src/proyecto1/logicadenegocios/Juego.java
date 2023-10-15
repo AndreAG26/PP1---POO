@@ -1,4 +1,6 @@
 package proyecto1.logicadenegocios;
+
+import proyecto1.dao.daoJugador;
 import java.util.*;
 
 
@@ -33,6 +35,7 @@ public class Juego
     
     public void crearJugador(int pCedula, String pNombreCompleto, String pCorreo){
         Jugador nuevoJugador = new Jugador(pCedula, pNombreCompleto, pCorreo); 
+        insertJugador(nuevoJugador);
         Jugadores.add(nuevoJugador);
     }
     
@@ -335,5 +338,7 @@ public class Juego
     public ArrayList<Jugador> getJugadores() {
         return Jugadores;
     }
+
+  
     
 }

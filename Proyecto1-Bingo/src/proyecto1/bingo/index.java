@@ -32,7 +32,9 @@ public class index extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
+        jPopupMenu1 = new javax.swing.JPopupMenu();
         jLabel1 = new javax.swing.JLabel();
+        IniciarJuegoBT = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         generarCartones = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -55,9 +57,21 @@ public class index extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Gestor de Bingos");
 
+        IniciarJuegoBT.setText("Iniciar Juego");
+        IniciarJuegoBT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IniciarJuegoBTActionPerformed(evt);
+            }
+        });
+
         generarCartones.setText("Cartones");
 
         jMenuItem4.setText("Generar cartones");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
         generarCartones.add(jMenuItem4);
 
         verCarton.setText("Ver cartones");
@@ -69,8 +83,6 @@ public class index extends javax.swing.JFrame {
         generarCartones.add(verCarton);
 
         jMenuBar1.add(generarCartones);
-
-        IniciarJuego.setText("Iniciar juego");
         jMenuBar1.add(IniciarJuego);
 
         EnviarCarton.setText("Enviar Cartón");
@@ -97,13 +109,19 @@ public class index extends javax.swing.JFrame {
                 .addContainerGap(118, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(143, 143, 143))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(145, 145, 145)
+                .addComponent(IniciarJuegoBT)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(116, 116, 116)
+                .addGap(75, 75, 75)
                 .addComponent(jLabel1)
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addComponent(IniciarJuegoBT)
+                .addGap(95, 95, 95))
         );
 
         pack();
@@ -120,6 +138,16 @@ public class index extends javax.swing.JFrame {
         formEnviarCartones.setVisible(true); 
         this.dispose();
     }//GEN-LAST:event_EnviarCartonActionPerformed
+
+    private void IniciarJuegoBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IniciarJuegoBTActionPerformed
+        IniciarJuego.setEnabled(false);
+    }//GEN-LAST:event_IniciarJuegoBTActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        GenerarCartones a = new GenerarCartones();
+        a.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -159,6 +187,7 @@ public class index extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu EnviarCarton;
     private javax.swing.JMenu IniciarJuego;
+    private javax.swing.JButton IniciarJuegoBT;
     private javax.swing.JMenu estadisticas;
     private javax.swing.JMenu generarCartones;
     private javax.swing.JLabel jLabel1;
@@ -168,6 +197,7 @@ public class index extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JMenuItem verCarton;
     private javax.swing.JMenu wordCloud;
     // End of variables declaration//GEN-END:variables
