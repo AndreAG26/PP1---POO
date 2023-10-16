@@ -1,5 +1,4 @@
 package proyecto1.logicadenegocios;
-
 import java.io.IOException;
 import proyecto1.dao.daoJugador;
 import java.util.*;
@@ -298,10 +297,11 @@ public class Juego {
                 cartonesAgregados++;
             }
             
+            
             if (cartonesAgregados == cantidad) {
                 break; // Si hemos agregado la cantidad deseada, salir del bucle
             }
-        } 
+
         
         String[] rutasDeCartones = jugador.obtenerRutasDeCartones();
         String correo = jugador.getCorreo();
@@ -314,6 +314,7 @@ public class Juego {
         else {
             System.out.println("Se han asignado " + cartonesAgregados + " cartones al jugador.");
         }
+            
     }
     
     public String jugarHastaCuatroEsquinas() {

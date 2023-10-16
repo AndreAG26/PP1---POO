@@ -80,5 +80,6 @@ public class Jugador {
             rutas[i] = ruta; // Agregar la ruta al arreglo
         }
         return rutas; // Devolver el arreglo de rutas
+
     }
 }
