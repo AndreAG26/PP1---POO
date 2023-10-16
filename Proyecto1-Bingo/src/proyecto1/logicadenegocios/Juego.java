@@ -15,14 +15,15 @@ public class Juego
     private final ArrayList<Carton> Cartones;
     private final Tombola tombola;
     private final ArrayList<Integer> bolitasSacadas; 
-    private final ArrayList<Jugador> Jugadores;
+    private final List<Jugador> Jugadores;
     
     public Juego()
     {
         Cartones = new ArrayList<>();
         tombola = new Tombola();
         bolitasSacadas = new ArrayList<>();
-        Jugadores = new ArrayList<>();
+        daoJugador jugadores= new daoJugador();
+        Jugadores = jugadores.cargarJugadores();
     }
     
     public void crearCartones(int n){
@@ -33,12 +34,7 @@ public class Juego
         }
     }
     
-    public void crearJugador(int pCedula, String pNombreCompleto, String pCorreo){
-        Jugador nuevoJugador = new Jugador(pCedula, pNombreCompleto, pCorreo);
-        daoJugador nuevo=new daoJugador();
-        nuevo.insertJugador(nuevoJugador);
-        Jugadores.add(nuevoJugador);
-    }
+
     
     public void sacarBolita(){
         int bolita = tombola.sacarBolita();
@@ -323,7 +319,7 @@ public class Juego
         return devolverID4Esquinas();
     }
     
-        public Jugador encontrarJugadorPorIDCarton(String idCartonGanador) {
+    public Jugador encontrarJugadorPorIDCarton(String idCartonGanador) {
         for (Jugador jugador : Jugadores) {
             if (jugador.tieneCartonConID(idCartonGanador)) {
                 return jugador;
@@ -336,7 +332,7 @@ public class Juego
         return Cartones;
     }
     
-    public ArrayList<Jugador> getJugadores() {
+    public List<Jugador> getJugadores() {
         return Jugadores;
     }
 

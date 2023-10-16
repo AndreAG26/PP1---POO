@@ -40,7 +40,6 @@ public class index extends javax.swing.JFrame {
         IniciarJuegoBT = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         generarCartones = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
         verCarton = new javax.swing.JMenuItem();
         IniciarJuego = new javax.swing.JMenu();
         estadisticas = new javax.swing.JMenu();
@@ -74,14 +73,6 @@ public class index extends javax.swing.JFrame {
                 generarCartonesActionPerformed(evt);
             }
         });
-
-        jMenuItem4.setText("Generar cartones");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
-        generarCartones.add(jMenuItem4);
 
         verCarton.setText("Ver cartones");
         verCarton.addActionListener(new java.awt.event.ActionListener() {
@@ -156,8 +147,8 @@ public class index extends javax.swing.JFrame {
         File carpeta = new File("C:/Users/Daniel/Documents/GitHub/PP1---POO/Proyecto1-Bingo/src/Cartones/");
         if (carpeta.isDirectory() && carpeta.list().length > 0) {
             // La carpeta no está vacía
-            IniciarJuegoJFrame juegoNuevo = new IniciarJuegoJFrame();
-            juegoNuevo.setVisible(true);
+            GenerarCartones a = new GenerarCartones();
+            a.setVisible(true);
             this.setVisible(false);  
             IniciarJuego.setEnabled(false);
         } else {
@@ -165,12 +156,6 @@ public class index extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "No existen cartones generados.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_IniciarJuegoBTActionPerformed
-
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        GenerarCartones a = new GenerarCartones();
-        a.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void BTNregistrarJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNregistrarJugadorActionPerformed
         
@@ -233,7 +218,6 @@ public class index extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JMenuItem registrar;
     private javax.swing.JMenuItem verCarton;

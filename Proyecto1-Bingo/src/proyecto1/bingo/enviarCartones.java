@@ -5,9 +5,14 @@
 package proyecto1.bingo;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import proyecto1.logicadenegocios.CuentaCorreo;
+import proyecto1.logicadenegocios.Juego;
+import proyecto1.logicadenegocios.Jugador;
 
 /**
  *
@@ -37,6 +42,7 @@ public class enviarCartones extends javax.swing.JFrame {
         cantidad = new javax.swing.JTextField();
         BTNEnviar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        siguiente = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Enviar cartones");
@@ -44,6 +50,7 @@ public class enviarCartones extends javax.swing.JFrame {
         jLabel2.setText("Digite la cédula del jugador:");
 
         cedula.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cedula.setSelectedItem(cedula);
         cedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cedulaActionPerformed(evt);
@@ -82,6 +89,13 @@ public class enviarCartones extends javax.swing.JFrame {
             }
         });
 
+        siguiente.setText("Siguiente");
+        siguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                siguienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -102,11 +116,14 @@ public class enviarCartones extends javax.swing.JFrame {
                             .addComponent(cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(152, 152, 152)
-                        .addComponent(BTNEnviar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton2)))
+                        .addComponent(BTNEnviar)))
                 .addContainerGap(76, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(siguiente)
+                .addGap(33, 33, 33))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,54 +141,117 @@ public class enviarCartones extends javax.swing.JFrame {
                 .addGap(52, 52, 52)
                 .addComponent(BTNEnviar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(siguiente))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public static Juego juego;
     
-   
-     
+    
+    public Juego cargarDatos(Juego juegoEnCurso){
+        juego=juegoEnCurso;
+        return juego;
+    }
+    
+    
      
     private void BTNEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNEnviarActionPerformed
         try {
-        String selectedCedula = (String) cedula.getSelectedItem();
-        String numCartonesStr = cantidad.getText();  // Asumiendo que tienes un JTextField llamado numCartonesTextField
-        
-        if(selectedCedula != null && numCartonesStr != null && !selectedCedula.isEmpty() && !numCartonesStr.isEmpty()) {
-            int numCartones = Integer.parseInt(numCartonesStr);
-            File cartonesDir = new File("C:/Users/Daniel/Documents/GitHub/PP1---POO/Proyecto1-Bingo/src/Cartones/");
-            File[] cartonesFiles = cartonesDir.listFiles();
-            Random random = new Random();
-            
-            if(cartonesFiles.length >= numCartones) {
-                String[] archivosAdjuntos = new String[numCartones];
-                for(int i = 0; i < numCartones; i++) {
-                    int randomIndex = random.nextInt(cartonesFiles.length);
-                    archivosAdjuntos[i] = cartonesFiles[randomIndex].getAbsolutePath();
-                }
-                
+            String selectedCedula = (String) cedula.getSelectedItem();
+            int cedula2=Integer.parseInt(selectedCedula);
+            String numCartonesStr = cantidad.getText(); 
+
+            if(selectedCedula != null && numCartonesStr != null && !selectedCedula.isEmpty() && !numCartonesStr.isEmpty()) {
+                int numCartones = Integer.parseInt(numCartonesStr);
+                String correo=cargarCorreoSeleccionado(cedula2);
+                juego.asignarCartonesAJugador(cedula2, numCartones);
+
                 // Enviar los cartones por correo
+                String[] archivosAdjuntos=tomarImagenes(numCartones);
                 CuentaCorreo cuentaCorreo = new CuentaCorreo("gestorbingos@gmail.com");
-                cuentaCorreo.enviarCorreo("arcedaniel2901@gmail.com", archivosAdjuntos);
+                cuentaCorreo.enviarCorreo(correo, archivosAdjuntos);
                 JOptionPane.showMessageDialog(this, "Cartones enviados con éxito.");
-            } else {
-                JOptionPane.showMessageDialog(this, "Error: No hay suficientes cartones disponibles.");
-            }
+
+                }
+        } catch(NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error: Debe ingresar un número válido.");
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
         }
-    } catch(NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "Error: Debe ingresar un número válido.");
-    } catch(Exception e) {
-        JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
-    }
     }//GEN-LAST:event_BTNEnviarActionPerformed
 
     private void cantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cantidadActionPerformed
 
+    private void cargarCedulasEnComboBox() {
+        List<Jugador> jugadores = juego.getJugadores();
+        DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>();
+
+        for (Jugador jugador : jugadores) {
+            int cedula1 = jugador.getCedula();
+            String cedulaString = String.valueOf(cedula1);
+            
+            modelo.addElement(cedulaString);
+        }
+
+        cedula.setModel(modelo);
+    }
+    
+    private String cargarCorreoSeleccionado(int cedula) {
+        List<Jugador> jugadores = juego.getJugadores();
+
+        for (Jugador jugador : jugadores) {
+            if (jugador.getCedula() == cedula) {
+                return jugador.getCorreo();
+            }
+        }
+
+        // Si no se encuentra un jugador con la cédula especificada, retorna null o una cadena vacía
+        return null;
+    }
+    
+
+    private String[] tomarImagenes(int numCartones) {
+        // Dirección de la carpeta
+        File carpeta = new File("C:/Users/Daniel/Documents/GitHub/PP1---POO/Proyecto1-Bingo/src/Cartones/");
+
+        // Lista de todos los archivos en la carpeta
+        File[] archivos = carpeta.listFiles((dir, name) -> name.toLowerCase().endsWith(".jpg"));
+
+        // Si la carpeta no tiene archivos o hay un error, retornamos un arreglo vacío
+        if (archivos == null || archivos.length == 0) {
+            return new String[0];
+        }
+
+        // Determinar el número de archivos a tomar
+        int archivosATomar = Math.min(numCartones, archivos.length);
+
+        // Crear un arreglo para almacenar las rutas de los archivos seleccionados
+        String[] rutasSeleccionadas = new String[archivosATomar];
+
+        // Tomar las primeras numCartones imágenes
+        for (int i = 0; i < archivosATomar; i++) {
+            rutasSeleccionadas[i] = archivos[i].getPath();
+        }
+
+        return rutasSeleccionadas;
+    }
+
+      
+
+         
+
+    
+
+    
+    
+    
     private void cedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cedulaActionPerformed
-        // TODO add your handling code here:
+        cargarCedulasEnComboBox();
     }//GEN-LAST:event_cedulaActionPerformed
 
     private void jButton2AncestorRemoved(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jButton2AncestorRemoved
@@ -183,6 +263,13 @@ public class enviarCartones extends javax.swing.JFrame {
         volver.setVisible(true);
         this.setVisible(false);// TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void siguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguienteActionPerformed
+        IniciarJuegoJFrame a = new IniciarJuegoJFrame();
+        a.cargarDatos(juego);
+        a.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_siguienteActionPerformed
 
     
      /**
@@ -229,5 +316,6 @@ public class enviarCartones extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton siguiente;
     // End of variables declaration//GEN-END:variables
 }

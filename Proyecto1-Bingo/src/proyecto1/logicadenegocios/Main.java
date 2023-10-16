@@ -2,6 +2,7 @@ package proyecto1.logicadenegocios;
 import proyecto1.bingo.GenerarCartones;
 
 import java.util.*;
+import proyecto1.dao.daoJugador;
 /**
  * Write a description of class Main here.
  * 
@@ -10,20 +11,9 @@ import java.util.*;
  */
 public class Main
 {
-    /*public static void main(String[] args) {
+    public static void main(String[] args) {
         Juego juego = new Juego();
-        
-        Tombola tombola = new Tombola();
-        tombola.rellenarTombola();
-        int numero = tombola.sacarBolita();
-        System.out.println(numero);
-        
-        
-        juego.crearJugador(117870118,"Joustin", "Joustin1@gmail.com");
-        juego.crearJugador(217870118,"Juan", "Juan1@gmail.com");
-        
-        
-        
+
         juego.crearCartones(10);
     
         
@@ -48,11 +38,11 @@ public class Main
             System.out.println("El Carton no esta asigado");
         }   
        
-    }*/
-    public static void main(String[] args) {
+    }
+    /*public static void main(String[] args) {
         GenerarCartones juego= new GenerarCartones();
         juego.setVisible(true);
         juego.setLocationRelativeTo(null);
-    }
+    }*/
     
 }

@@ -4,6 +4,8 @@
  */
 package proyecto1.bingo;
 
+import proyecto1.logicadenegocios.Juego;
+
 /**
  *
  * @author Daniel
@@ -32,7 +34,7 @@ public class IniciarJuegoJFrame extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         textField1 = new java.awt.TextField();
-        jButton2 = new javax.swing.JButton();
+        Iniciar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,7 +56,12 @@ public class IniciarJuegoJFrame extends javax.swing.JFrame {
 
         textField1.setText("0");
 
-        jButton2.setText("Iniciar");
+        Iniciar.setText("Iniciar");
+        Iniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IniciarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -78,7 +85,7 @@ public class IniciarJuegoJFrame extends javax.swing.JFrame {
                             .addComponent(textField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(155, 155, 155)
-                        .addComponent(jButton2)))
+                        .addComponent(Iniciar)))
                 .addContainerGap(119, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -96,7 +103,7 @@ public class IniciarJuegoJFrame extends javax.swing.JFrame {
                         .addComponent(jLabel3))
                     .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(Iniciar)
                 .addGap(79, 79, 79)
                 .addComponent(jButton1)
                 .addContainerGap())
@@ -111,6 +118,19 @@ public class IniciarJuegoJFrame extends javax.swing.JFrame {
         this.setVisible(false);     
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void IniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IniciarActionPerformed
+        
+    }//GEN-LAST:event_IniciarActionPerformed
+
+    public Juego cargarDatos(Juego juegoEnCurso){
+        return juegoEnCurso;
+    }
+    
+    
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -147,8 +167,8 @@ public class IniciarJuegoJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Iniciar;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
