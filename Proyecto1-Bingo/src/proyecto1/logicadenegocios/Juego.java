@@ -277,12 +277,12 @@ public class Juego {
     
     public void asignarCartonesAJugador(int numeroCedula, int cantidad) throws IOException {
         Jugador jugador = buscarJugadorPorCedula(numeroCedula);
-        
+
         if (jugador == null) {
             System.out.println("Jugador no encontrado.");
             return;
         }
-        
+
         if (Cartones.isEmpty()) {
             System.out.println("No hay cartones disponibles para asignar.");
             return;
@@ -296,26 +296,24 @@ public class Juego {
                 jugador.agregarCarton(carton); // Agregar el cartón al jugador
                 cartonesAgregados++;
             }
-            
-            
+
             if (cartonesAgregados == cantidad) {
                 break; // Si hemos agregado la cantidad deseada, salir del bucle
             }
+        }
 
-        
-            String[] rutasDeCartones = jugador.obtenerRutasDeCartones();
-            String correo = jugador.getCorreo();
-            CuentaCorreo cuentaCorreo = new CuentaCorreo("gestorbingos@gmail.com");
-            cuentaCorreo.enviarCorreo(correo, rutasDeCartones);
+        String[] rutasDeCartones = jugador.obtenerRutasDeCartones();
+        String correo = jugador.getCorreo();
+        CuentaCorreo cuentaCorreo = new CuentaCorreo("gestorbingos@gmail.com");
+        cuentaCorreo.enviarCorreo(correo, rutasDeCartones);
 
-            if (cartonesAgregados < cantidad) {
-                System.out.println("No se pudieron asignar la cantidad deseada de cartones debido a que algunos están reservados. Se asignaron " + cartonesAgregados + " cartones.");
-            } 
-            else {
-                System.out.println("Se han asignado " + cartonesAgregados + " cartones al jugador.");
-            }
-        }   
+        if (cartonesAgregados < cantidad) {
+            System.out.println("No se pudieron asignar la cantidad deseada de cartones debido a que algunos están reservados. Se asignaron " + cartonesAgregados + " cartones.");
+        } else {
+            System.out.println("Se han asignado " + cartonesAgregados + " cartones al jugador.");
+        }
     }
+
     
     public String jugarHastaCuatroEsquinas() {
         

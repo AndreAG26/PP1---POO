@@ -76,7 +76,7 @@ public class Jugador {
             Carton carton = cartones.get(i); // Obtener el cartón
             String ID = carton.getID(); // Obtener el ID del cartón
             // Construir la ruta de la imagen
-            String ruta = "C:/Users/Dell/Documents/GitHub/PP1---POO/Proyecto1-Bingo/src/Cartones/" + ID + ".jpg";
+            String ruta = "C:/Users/Daniel/Documents/GitHub/PP1---POO/Proyecto1-Bingo/src/Cartones/" + ID + ".jpg";
             rutas[i] = ruta; // Agregar la ruta al arreglo
         }
         return rutas; // Devolver el arreglo de rutas

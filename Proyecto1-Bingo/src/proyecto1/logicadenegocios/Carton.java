@@ -217,7 +217,7 @@ public final class Carton
         // Ruta compu Daniel: "C:/Users/Daniel/Documents/GitHub/PP1---POO/Proyecto1-Bingo/src/Cartones/"
         
         try {
-            ImageIO.write(image, "jpg", new File("C:/Users/Dell/Documents/GitHub/PP1---POO/Proyecto1-Bingo/src/Cartones/"+ ID + ".jpg"));
+            ImageIO.write(image, "jpg", new File("C:/Users/Daniel/Documents/GitHub/PP1---POO/Proyecto1-Bingo/src/Cartones/"+ ID + ".jpg"));
         } catch (IOException e) {
         }
 

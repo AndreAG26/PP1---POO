@@ -168,11 +168,6 @@ public class enviarCartones extends javax.swing.JFrame {
                 int numCartones = Integer.parseInt(numCartonesStr);
                 String correo=cargarCorreoSeleccionado(cedula2);
                 juego.asignarCartonesAJugador(cedula2, numCartones);
-
-                // Enviar los cartones por correo
-                String[] archivosAdjuntos=tomarImagenes(numCartones);
-                CuentaCorreo cuentaCorreo = new CuentaCorreo("gestorbingos@gmail.com");
-                cuentaCorreo.enviarCorreo(correo, archivosAdjuntos);
                 JOptionPane.showMessageDialog(this, "Cartones enviados con éxito.");
 
                 }

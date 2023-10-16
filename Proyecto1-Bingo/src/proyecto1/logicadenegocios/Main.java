@@ -12,23 +12,15 @@ import proyecto1.dao.daoJugador;
 public class Main
 {
     public static void main(String[] args) {
-        Juego juego = new Juego();
+        //Juego juego = new Juego();
         
-        juego.crearCartones(10);
+        //juego.crearCartones(10);
     
         
         //juego.asignarCartonesAJugador(117870118, 3);
         //juego.asignarCartonesAJugador(217870118, 2);
         
-         for (Jugador jugador : juego.getJugadores()) {
-            System.out.println("Nombre del jugador: " + jugador.getNombreCompleto());
-            ArrayList<String> IDsCartones = jugador.obtenerIDCartones();
-            System.out.println("ID de los cartones del jugador:");
-            for (String ID : IDsCartones) {
-                System.out.println(ID);
-            }
-            System.out.println();
-        }
+        
         String idCartonGanador = juego.jugarHastaCuatroEsquinas();
         Jugador jugadorGanador = juego.encontrarJugadorPorIDCarton(idCartonGanador);
 
