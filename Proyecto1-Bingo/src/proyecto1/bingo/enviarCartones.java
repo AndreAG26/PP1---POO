@@ -217,7 +217,7 @@ public class enviarCartones extends javax.swing.JFrame {
 
     private String[] tomarImagenes(int numCartones) {
         // Dirección de la carpeta
-        File carpeta = new File("C:/Users/Daniel/Documents/GitHub/PP1---POO/Proyecto1-Bingo/src/Cartones/");
+        File carpeta = new File("C:/Dell/Daniel/Documents/GitHub/PP1---POO/Proyecto1-Bingo/src/Cartones/");
 
         // Lista de todos los archivos en la carpeta
         File[] archivos = carpeta.listFiles((dir, name) -> name.toLowerCase().endsWith(".jpg"));

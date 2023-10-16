@@ -36,11 +36,14 @@ public class index extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jPopupMenu1 = new javax.swing.JPopupMenu();
+        jMenu4 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
         jLabel1 = new javax.swing.JLabel();
         IniciarJuegoBT = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         generarCartones = new javax.swing.JMenu();
         verCarton = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         IniciarJuego = new javax.swing.JMenu();
         estadisticas = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -56,6 +59,10 @@ public class index extends javax.swing.JFrame {
         jMenu2.setText("jMenu2");
 
         jMenu3.setText("jMenu3");
+
+        jMenu4.setText("jMenu4");
+
+        jMenu5.setText("jMenu5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,6 +90,14 @@ public class index extends javax.swing.JFrame {
             }
         });
         generarCartones.add(verCarton);
+
+        jMenuItem5.setText("Generar Cartones");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        generarCartones.add(jMenuItem5);
 
         jMenuBar1.add(generarCartones);
         jMenuBar1.add(IniciarJuego);
@@ -190,6 +205,12 @@ public class index extends javax.swing.JFrame {
         a.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        GenerarCartones a = new GenerarCartones();
+        a.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -236,11 +257,13 @@ public class index extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JMenuItem registrar;
     private javax.swing.JMenuItem verCarton;

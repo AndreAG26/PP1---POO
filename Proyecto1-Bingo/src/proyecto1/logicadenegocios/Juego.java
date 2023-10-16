@@ -1,5 +1,6 @@
 package proyecto1.logicadenegocios;
 
+import java.io.IOException;
 import proyecto1.dao.daoJugador;
 import java.util.*;
 
@@ -275,7 +276,7 @@ public class Juego {
         return null; // Si no se encuentra, devuelve null
     }
     
-    public void asignarCartonesAJugador(int numeroCedula, int cantidad) {
+    public void asignarCartonesAJugador(int numeroCedula, int cantidad) throws IOException {
         Jugador jugador = buscarJugadorPorCedula(numeroCedula);
         
         if (jugador == null) {
@@ -300,7 +301,12 @@ public class Juego {
             if (cartonesAgregados == cantidad) {
                 break; // Si hemos agregado la cantidad deseada, salir del bucle
             }
-        }   
+        } 
+        
+        String[] rutasDeCartones = jugador.obtenerRutasDeCartones();
+        String correo = jugador.getCorreo();
+        CuentaCorreo cuentaCorreo = new CuentaCorreo("gestorbingos@gmail.com");
+        cuentaCorreo.enviarCorreo(correo, rutasDeCartones);
 
         if (cartonesAgregados < cantidad) {
             System.out.println("No se pudieron asignar la cantidad deseada de cartones debido a que algunos están reservados. Se asignaron " + cartonesAgregados + " cartones.");
