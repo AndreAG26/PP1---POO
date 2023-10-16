@@ -3,13 +3,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package proyecto1.dao;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.HashMap;
+import java.util.Map;
+
 import proyecto1.logicadenegocios.ConexionDB;
 import proyecto1.logicadenegocios.Juego;
-
 
 
 /**
@@ -40,6 +46,33 @@ public class daoPartida {
             e.printStackTrace();
             return false;
         }
+    }
+    
+    public Map<String, Integer> frecuenciaConfiPartidas(){
+        Connection connection = null;
+        Map<String, Integer> datos= new HashMap<>();
+        
+        try{
+            connection= cx.conectar();
+            Statement statement = connection.createStatement();
+            String query = "SELECT configuracion, COUNT(configuracion) AS repeticiones FROM partida GROUP BY configuracion;";
+            ResultSet resultSet= statement.executeQuery(query);
+            
+            while (resultSet.next()){
+                String configuracion = resultSet.getString("configuracion");
+                int repeticiones = resultSet.getInt("repeticiones");
+                
+                datos.put(configuracion, repeticiones);
+            }
+            
+            resultSet.close();
+            statement.close();
+            connection.close();
+           
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return datos;
     }
         
     /**
