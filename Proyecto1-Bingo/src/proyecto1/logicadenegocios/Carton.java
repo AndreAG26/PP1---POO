@@ -19,12 +19,12 @@ import javax.imageio.ImageIO;
  */
 public final class Carton
 {
-    private String idCarton;
-    private ArrayList<Integer> filaB;
-    private ArrayList<Integer> filaI;
-    private ArrayList<Integer> filaN;
-    private ArrayList<Integer> filaG;
-    private ArrayList<Integer> filaO;
+    private final String idCarton;
+    private final ArrayList<Integer> filaB;
+    private final ArrayList<Integer> filaI;
+    private final ArrayList<Integer> filaN;
+    private final ArrayList<Integer> filaG;
+    private final ArrayList<Integer> filaO;
     private EstadoCarton estado; // Campo de estado como una enumeración
 
     // Enumeración para los estados posibles
@@ -213,10 +213,12 @@ public final class Carton
         String ID = idCarton;
         g.drawString(ID, 228, 650);
         
+        // Ruta compu Andrea: "C:/Users/Dell/Documents/GitHub/PP1---POO/Proyecto1-Bingo/src/Cartones/"
+        // Ruta compu Daniel: "C:/Users/Daniel/Documents/GitHub/PP1---POO/Proyecto1-Bingo/src/Cartones/"
+        
         try {
-            ImageIO.write(image, "jpg", new File("C:/Users/Daniel/Documents/GitHub/PP1---POO/Proyecto1-Bingo/src/Cartones/"+ ID + ".jpg"));
+            ImageIO.write(image, "jpg", new File("C:/Users/Dell/Documents/GitHub/PP1---POO/Proyecto1-Bingo/src/Cartones/"+ ID + ".jpg"));
         } catch (IOException e) {
-            e.printStackTrace();
         }
 
         g.dispose();

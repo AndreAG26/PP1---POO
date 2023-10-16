@@ -25,7 +25,6 @@ public class daoPartida {
 
     public boolean insertPartida(Juego configuracion){
         PreparedStatement ps=null;
-        
         LocalDate date=LocalDate.now();
         LocalTime hora= LocalTime.now();
         
