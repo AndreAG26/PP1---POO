@@ -104,6 +104,11 @@ public class index extends javax.swing.JFrame {
         estadisticas.add(jMenuItem2);
 
         jMenuItem3.setText("Frecuencia histórica de partidas");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         estadisticas.add(jMenuItem3);
 
         jMenuBar1.add(estadisticas);
@@ -192,6 +197,12 @@ public class index extends javax.swing.JFrame {
         a.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        FrecuenciaConfiPartidas a = new FrecuenciaConfiPartidas();
+        a.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
     
     /**
      * @param args the command line arguments

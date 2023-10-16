@@ -11,7 +11,9 @@ import java.sql.Statement;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import proyecto1.logicadenegocios.ConexionDB;
@@ -48,9 +50,9 @@ public class daoPartida {
         }
     }
     
-    public Map<String, Integer> frecuenciaConfiPartidas(){
+    public List<String> frecuenciaConfiPartidas(){
         Connection connection = null;
-        Map<String, Integer> datos= new HashMap<>();
+        List<String> DataList= new ArrayList<String>();
         
         try{
             connection= cx.conectar();
@@ -60,9 +62,10 @@ public class daoPartida {
             
             while (resultSet.next()){
                 String configuracion = resultSet.getString("configuracion");
-                int repeticiones = resultSet.getInt("repeticiones");
+                String repeticiones = String.valueOf(resultSet.getInt("repeticiones"));
                 
-                datos.put(configuracion, repeticiones);
+                DataList.add(configuracion); System.out.println(configuracion);
+                DataList.add(repeticiones); System.out.println(repeticiones);
             }
             
             resultSet.close();
@@ -72,7 +75,7 @@ public class daoPartida {
         } catch (Exception e){
             e.printStackTrace();
         }
-        return datos;
+        return DataList;
     }
         
     /**
@@ -82,12 +85,14 @@ public class daoPartida {
     /*public static void main(String[] args){
         Juego partida= new Juego();
         daoPartida dao = new daoPartida();
+        /*Map<String, Integer> datos= new HashMap<>();
         partida.setConfiguracion("Cartón lleno");
         if (dao.insertPartida(partida)){
             System.out.println("Inserción exitosa");
         }else{
             System.out.println("ERROR");
         }
+        dao.frecuenciaConfiPartidas();
     }*/
         
 }
