@@ -2,6 +2,7 @@ package proyecto1.logicadenegocios;
 
 import java.util.*;
 import java.util.Random;
+import proyecto1.dao.numerosCantados;
 /**
  * Write a description of class Tombola here.
  * 
@@ -40,6 +41,8 @@ public class Tombola
             int indiceAleatorio = random.nextInt(bolitas.size());
             int numeroAleatorio = bolitas.get(indiceAleatorio);
             bolitas.remove(indiceAleatorio);
+            numerosCantados bolita= new numerosCantados();
+            bolita.insertNumero(numeroAleatorio);
             return numeroAleatorio;
         } else {
             return -1; // Otra forma de indicar que no hay bolitas

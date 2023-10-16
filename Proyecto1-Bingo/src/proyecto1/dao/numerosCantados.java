@@ -9,6 +9,8 @@ import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.DriverManager;
+import java.sql.Statement;
 
 import proyecto1.logicadenegocios.ConexionDB;
 import proyecto1.logicadenegocios.Juego;
@@ -16,7 +18,8 @@ import proyecto1.logicadenegocios.Tombola;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import java.util.ArrayList;
+import java.util.List;
 
 
 
@@ -75,6 +78,33 @@ public class numerosCantados {
                 e.printStackTrace();
             }
         }
+    }
+    
+    public List<Integer> top10(){
+        Connection connection = null;
+        List<Integer> DataList= new ArrayList<Integer>();
+        
+        try{
+            connection= cx.conectar();
+            Statement statement = connection.createStatement();
+            String query = "SELECT numero, COUNT (numero) AS repeticiones FROM numerosCantados GROUP BY numero ORDER BY repeticiones DESC LIMIT 10;";
+            ResultSet resultSet= statement.executeQuery(query);
+            
+            while (resultSet.next()){
+                int numero = resultSet.getInt("numero");
+                int repeticiones = resultSet.getInt("repeticiones");
+                DataList.add(numero);
+                DataList.add(repeticiones);
+            }
+            
+            resultSet.close();
+            statement.close();
+            connection.close();
+           
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return DataList;
     }
     
     /*public static void main(String[] args){

@@ -43,6 +43,8 @@ public class index extends javax.swing.JFrame {
         verCarton = new javax.swing.JMenuItem();
         IniciarJuego = new javax.swing.JMenu();
         estadisticas = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         wordCloud = new javax.swing.JMenu();
         BTNregistrarJugador = new javax.swing.JMenu();
         registrar = new javax.swing.JMenuItem();
@@ -86,6 +88,18 @@ public class index extends javax.swing.JFrame {
         jMenuBar1.add(IniciarJuego);
 
         estadisticas.setText("Estadísticas");
+
+        jMenuItem2.setText("Top 10 números cantados");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        estadisticas.add(jMenuItem2);
+
+        jMenuItem3.setText("Frecuencia histórica de partidas");
+        estadisticas.add(jMenuItem3);
+
         jMenuBar1.add(estadisticas);
 
         wordCloud.setText("WordCloud");
@@ -170,6 +184,12 @@ public class index extends javax.swing.JFrame {
     private void generarCartonesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarCartonesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_generarCartonesActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        Top10Numeros a = new Top10Numeros();
+        a.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -218,6 +238,9 @@ public class index extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JMenuItem registrar;
     private javax.swing.JMenuItem verCarton;

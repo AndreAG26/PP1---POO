@@ -10,15 +10,15 @@ import java.util.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Juego
-{
+public class Juego {
     private final ArrayList<Carton> Cartones;
     private final Tombola tombola;
     private final ArrayList<Integer> bolitasSacadas; 
     private final List<Jugador> Jugadores;
+    private  String configuracion;
     
-    public Juego()
-    {
+
+    public Juego(){
         Cartones = new ArrayList<>();
         tombola = new Tombola();
         bolitasSacadas = new ArrayList<>();
@@ -336,6 +336,17 @@ public class Juego
         return Jugadores;
     }
 
-  
+    public void setConfiguracion(String configuracion){
+        this.configuracion=configuracion;
+    }
     
+    public String getConfiguracion(){
+        return configuracion;
+    }
+    public Tombola getTombola() {
+        return tombola;
+    }
+    public ArrayList<Integer> getBolitasSacadas() {
+        return bolitasSacadas;
+    }
 }

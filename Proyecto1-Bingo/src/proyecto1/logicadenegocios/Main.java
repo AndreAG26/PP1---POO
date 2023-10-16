@@ -39,7 +39,9 @@ public class Main
         }   
        
     }
+
     /*public static void main(String[] args) {
+
         GenerarCartones juego= new GenerarCartones();
         juego.setVisible(true);
         juego.setLocationRelativeTo(null);
