@@ -43,7 +43,6 @@ public class index extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         generarCartones = new javax.swing.JMenu();
         verCarton = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
         IniciarJuego = new javax.swing.JMenu();
         estadisticas = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -90,14 +89,6 @@ public class index extends javax.swing.JFrame {
             }
         });
         generarCartones.add(verCarton);
-
-        jMenuItem5.setText("Generar Cartones");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
-            }
-        });
-        generarCartones.add(jMenuItem5);
 
         jMenuBar1.add(generarCartones);
         jMenuBar1.add(IniciarJuego);
@@ -173,17 +164,13 @@ public class index extends javax.swing.JFrame {
     }//GEN-LAST:event_verCartonActionPerformed
 
     private void IniciarJuegoBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IniciarJuegoBTActionPerformed
-        File carpeta = new File("C:/Users/Daniel/Documents/GitHub/PP1---POO/Proyecto1-Bingo/src/Cartones/");
-        if (carpeta.isDirectory() && carpeta.list().length > 0) {
-            // La carpeta no está vacía
-            GenerarCartones a = new GenerarCartones();
-            a.setVisible(true);
-            this.setVisible(false);  
-            IniciarJuego.setEnabled(false);
-        } else {
-            // La carpeta está vacía o no existe
-            JOptionPane.showMessageDialog(this, "No existen cartones generados.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+        
+        // La carpeta no está vacía
+        GenerarCartones a = new GenerarCartones();
+        a.setVisible(true);
+        this.setVisible(false);  
+        IniciarJuego.setEnabled(false);
+        
     }//GEN-LAST:event_IniciarJuegoBTActionPerformed
 
     private void BTNregistrarJugadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNregistrarJugadorActionPerformed
@@ -205,12 +192,6 @@ public class index extends javax.swing.JFrame {
         a.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        GenerarCartones a = new GenerarCartones();
-        a.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -263,7 +244,6 @@ public class index extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JMenuItem registrar;
     private javax.swing.JMenuItem verCarton;

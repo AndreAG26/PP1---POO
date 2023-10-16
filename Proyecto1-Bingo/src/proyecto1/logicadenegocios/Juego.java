@@ -303,18 +303,18 @@ public class Juego {
             }
 
         
-        String[] rutasDeCartones = jugador.obtenerRutasDeCartones();
-        String correo = jugador.getCorreo();
-        CuentaCorreo cuentaCorreo = new CuentaCorreo("gestorbingos@gmail.com");
-        cuentaCorreo.enviarCorreo(correo, rutasDeCartones);
+            String[] rutasDeCartones = jugador.obtenerRutasDeCartones();
+            String correo = jugador.getCorreo();
+            CuentaCorreo cuentaCorreo = new CuentaCorreo("gestorbingos@gmail.com");
+            cuentaCorreo.enviarCorreo(correo, rutasDeCartones);
 
-        if (cartonesAgregados < cantidad) {
-            System.out.println("No se pudieron asignar la cantidad deseada de cartones debido a que algunos están reservados. Se asignaron " + cartonesAgregados + " cartones.");
-        } 
-        else {
-            System.out.println("Se han asignado " + cartonesAgregados + " cartones al jugador.");
-        }
-            
+            if (cartonesAgregados < cantidad) {
+                System.out.println("No se pudieron asignar la cantidad deseada de cartones debido a que algunos están reservados. Se asignaron " + cartonesAgregados + " cartones.");
+            } 
+            else {
+                System.out.println("Se han asignado " + cartonesAgregados + " cartones al jugador.");
+            }
+        }   
     }
     
     public String jugarHastaCuatroEsquinas() {

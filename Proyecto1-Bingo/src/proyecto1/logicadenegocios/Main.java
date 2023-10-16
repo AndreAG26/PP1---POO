@@ -17,8 +17,8 @@ public class Main
         juego.crearCartones(10);
     
         
-        juego.asignarCartonesAJugador(117870118, 3);
-        juego.asignarCartonesAJugador(217870118, 2);
+        //juego.asignarCartonesAJugador(117870118, 3);
+        //juego.asignarCartonesAJugador(217870118, 2);
         
          for (Jugador jugador : juego.getJugadores()) {
             System.out.println("Nombre del jugador: " + jugador.getNombreCompleto());
