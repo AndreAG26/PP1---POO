@@ -12,14 +12,27 @@ import java.sql.ResultSet;
 import proyecto1.logicadenegocios.ConexionDB;
 import proyecto1.logicadenegocios.Juego;
 import proyecto1.logicadenegocios.Jugador;
-
+/**
+ * Clase daoGanadores que se encarga de las operaciones relacionadas con los ganadores en la base de datos.
+ * 
+ * @author Daniel Arce, Andrea Alemán y Joustin Montenegro
+ * @version 16/10/2023
+ */
 public class daoGanadores {
     ConexionDB cx;
-
+    /**
+     * Constructor de la clase daoGanadores.
+     * Inicializa la conexión a la base de datos.
+     */
     public daoGanadores(){
         cx = new ConexionDB();
     }
-
+    /**
+     * Método que inserta un ganador en la base de datos.
+     * 
+     * @param jugador Jugador que ha ganado.
+     * @return boolean Retorna true si la inserción fue exitosa, false en caso contrario.
+     */
     public boolean insertGanador(Jugador jugador){
         Connection connection = null;
         PreparedStatement ps = null;
@@ -64,17 +77,6 @@ public class daoGanadores {
             }
         }
     }
-
-    /*public static void main(String[] args){
-        Jugador jugador= new Jugador();
-        daoGanadores dao= new daoGanadores();
-        jugador.setCedula(118650791);
-        if (dao.insertGanador(jugador)){
-            System.out.println("Inserción exitosa");
-        }else{
-            System.out.println("ERROR");
-        }
-    }*/
     
 }
 

@@ -15,13 +15,16 @@ import proyecto1.logicadenegocios.Juego;
 import proyecto1.logicadenegocios.Jugador;
 
 /**
- *
- * @author Daniel
+ * La clase <code>enviarCartones</code> representa una interfaz gráfica de usuario (GUI) 
+ * que permite enviar cartones a jugadores en un juego de bingo.
+ * 
+ * @author Daniel Arce, Andrea Alemán y Joustin Montenegro
+ * @version 16/10/2023
  */
 public class enviarCartones extends javax.swing.JFrame {
 
     /**
-     * Creates new form enviarCartones
+     * Constructor por defecto que inicializa los componentes de la GUI.
      */
     public enviarCartones() {
         initComponents();
@@ -175,17 +178,29 @@ public class enviarCartones extends javax.swing.JFrame {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Variable estática que representa el juego en curso.
+     */
     public static Juego juego;
     
-    
+    /**
+     * Método que carga los datos del juego en curso.
+     * 
+     * @param juegoEnCurso El juego en curso.
+     * @return El juego cargado.
+     */
     public Juego cargarDatos(Juego juegoEnCurso){
         juego=juegoEnCurso;
         return juego;
     }
     
     
-     
+    /**
+     * Método que se ejecuta cuando se presiona el botón "Enviar".
+     * Se encarga de enviar los cartones al jugador seleccionado.
+     * 
+     * @param evt Evento del botón.
+     */ 
     private void BTNEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNEnviarActionPerformed
         try {
             String selectedCedula = (String) cedula.getSelectedItem();
@@ -205,11 +220,18 @@ public class enviarCartones extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
         }
     }//GEN-LAST:event_BTNEnviarActionPerformed
-
+    /**
+     * Método que carga las cédulas de los jugadores en el comboBox.
+     */
     private void cantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cantidadActionPerformed
-
+    /**
+     * Método que carga el correo del jugador seleccionado.
+     * 
+     * @param cedula La cédula del jugador.
+     * @return El correo del jugador.
+     */
     private void cargarCedulasEnComboBox() {
         List<Jugador> jugadores = juego.getJugadores();
         DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>();
@@ -223,7 +245,12 @@ public class enviarCartones extends javax.swing.JFrame {
 
         cedula.setModel(modelo);
     }
-    
+    /**
+     * Método que toma las imágenes de los cartones.
+     * 
+     * @param numCartones Número de cartones a tomar.
+     * @return Un arreglo con las rutas de las imágenes seleccionadas.
+     */
     private String cargarCorreoSeleccionado(int cedula) {
         List<Jugador> jugadores = juego.getJugadores();
 
@@ -237,7 +264,11 @@ public class enviarCartones extends javax.swing.JFrame {
         return null;
     }
     
-
+    /**
+     * Método principal que inicia la aplicación.
+     * 
+     * @param args Argumentos de la línea de comandos.
+     */
     private String[] tomarImagenes(int numCartones) {
         // Dirección de la carpeta
         File carpeta = new File("C:/Dell/Daniel/Documents/GitHub/PP1---POO/Proyecto1-Bingo/src/Cartones/");

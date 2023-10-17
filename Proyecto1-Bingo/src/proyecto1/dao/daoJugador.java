@@ -14,16 +14,26 @@ import proyecto1.logicadenegocios.ConexionDB;
 import proyecto1.logicadenegocios.Jugador;
 
 /**
- *
- * @author Dell
+ * Clase daoJugador que se encarga de las operaciones relacionadas con los jugadores en la base de datos.
+ * 
+ * @author Daniel Arce, Andrea Alemán y Joustin Montenegro
+ * @version 16/10/2023
  */
 public class daoJugador {
     ConexionDB cx;
-
+    /**
+     * Constructor de la clase daoJugador.
+     * Inicializa la conexión a la base de datos.
+     */
     public daoJugador(){
         cx=new ConexionDB();
     }
-
+    /**
+     * Método que inserta un jugador en la base de datos.
+     * 
+     * @param jugador Jugador que se desea insertar.
+     * @return boolean Retorna true si la inserción fue exitosa, false en caso contrario.
+     */
     public boolean insertJugador(Jugador jugador){
     
         PreparedStatement ps = null;
@@ -57,7 +67,11 @@ public class daoJugador {
             return false;
         }
     }
-    
+    /**
+     * Método que carga todos los jugadores desde la base de datos.
+     * 
+     * @return List<Jugador> Lista de jugadores obtenidos de la base de datos.
+     */
     public List<Jugador> cargarJugadores() {
         List<Jugador> jugadores = new ArrayList<>();
 
@@ -104,18 +118,6 @@ public class daoJugador {
         return jugadores;
     }
     
-    /*
-    public static void main(String[] args){
-        Jugador jugador= new Jugador();
-        daoJugador dao = new daoJugador();
-        jugador.setNombreCompleto("Damaris Montero");
-        jugador.setCorreo("damarisg3168@gmail.com");
-        jugador.setCedula(118659874);
-        if (dao.insertJugador(jugador)){
-            System.out.println("Inserción exitosa");
-        }else{
-            System.out.println("ERROR");
-        }
-    }*/
+ 
     
 }

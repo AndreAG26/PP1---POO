@@ -21,16 +21,26 @@ import proyecto1.logicadenegocios.Juego;
 
 
 /**
- *
- * @author Dell
+ * Clase daoPartida que se encarga de las operaciones relacionadas con las partidas en la base de datos.
+ * 
+ * @author Daniel Arce, Andrea Alemán y Joustin Montenegro
+ * @version 16/10/2023
  */
 public class daoPartida {
     ConexionDB cx;
-
+    /**
+     * Constructor de la clase daoPartida.
+     * Inicializa la conexión a la base de datos.
+     */
     public daoPartida(){
         cx=new ConexionDB();
     }
-
+    /**
+     * Método que inserta una partida en la base de datos.
+     * 
+     * @param configuracion Configuración del juego que se desea insertar.
+     * @return boolean Retorna true si la inserción fue exitosa, false en caso contrario.
+     */
     public boolean insertPartida(Juego configuracion){
         PreparedStatement ps=null;
         LocalDate date=LocalDate.now();
@@ -49,7 +59,11 @@ public class daoPartida {
             return false;
         }
     }
-    
+    /**
+     * Método que obtiene la frecuencia de configuraciones de partidas en la base de datos.
+     * 
+     * @return List<String> Lista con la configuración y su frecuencia.
+     */
     public List<String> frecuenciaConfiPartidas(){
         Connection connection = null;
         List<String> DataList= new ArrayList<String>();
@@ -78,21 +92,6 @@ public class daoPartida {
         return DataList;
     }
         
-    /**
-     *
-     * @param args
-     */
-    /*public static void main(String[] args){
-        Juego partida= new Juego();
-        daoPartida dao = new daoPartida();
-        /*Map<String, Integer> datos= new HashMap<>();
-        partida.setConfiguracion("Cartón lleno");
-        if (dao.insertPartida(partida)){
-            System.out.println("Inserción exitosa");
-        }else{
-            System.out.println("ERROR");
-        }
-        dao.frecuenciaConfiPartidas();
-    }*/
+
         
 }

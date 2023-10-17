@@ -24,16 +24,26 @@ import java.util.List;
 
 
 /**
- *
- * @author Dell
+ * Clase numerosCantados que se encarga de las operaciones relacionadas con los números cantados en la base de datos.
+ * 
+ * @author Daniel Arce, Andrea Alemán y Joustin Montenegro
+ * @version 16/10/2023
  */
 public class numerosCantados {
     ConexionDB cx;
-
+    /**
+     * Constructor de la clase numerosCantados.
+     * Inicializa la conexión a la base de datos.
+     */
     public numerosCantados(){
         cx=new ConexionDB();
     }
-
+    /**
+     * Método que inserta un número cantado en la base de datos.
+     * 
+     * @param numeroBolita Número de la bolita que se desea insertar.
+     * @return boolean Retorna true si la inserción fue exitosa, false en caso contrario.
+     */
     public boolean insertNumero(int numeroBolita){
         
         Connection connection = null;
@@ -79,7 +89,11 @@ public class numerosCantados {
             }
         }
     }
-    
+    /**
+     * Método que obtiene el top 10 de números cantados en la base de datos.
+     * 
+     * @return List<Integer> Lista con los números y sus repeticiones.
+     */
     public List<Integer> top10(){
         Connection connection = null;
         List<Integer> DataList= new ArrayList<Integer>();
@@ -107,14 +121,6 @@ public class numerosCantados {
         return DataList;
     }
     
-    /*public static void main(String[] args){
-        numerosCantados dao= new numerosCantados();
-        int numBolita=75;
-        if (dao.insertNumero(numBolita)){
-            System.out.println("Inserción exitosa");
-        }else{
-            System.out.println("ERROR");
-        }
-    }*/
+
 }
      

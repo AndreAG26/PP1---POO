@@ -17,9 +17,11 @@ import javax.mail.Multipart;
 import java.io.File;
 
 /**
+ * La clase CuentaCorreo se encarga de gestionar el envío de correos electrónicos
+ * utilizando el protocolo SMTP. Permite enviar correos con archivos adjuntos.
  * 
- * @author 
- * @version 1.0
+ * @author Daniel Arce, Andrea Alemán y Joustin Montenegro
+ * @version 16/10/2023
  */
 
 public class CuentaCorreo{
@@ -30,10 +32,10 @@ public class CuentaCorreo{
   private Properties propiedades;
   
    /**
-   * Constructor que inicializa la cuenta de correo con las propiedades básicas para la conexión SMTP.
-   * 
-   * @param pCorreo El correo electrónico del usuario que será utilizado para enviar mensajes.
-   */
+     * Constructor que inicializa la cuenta de correo con las propiedades básicas para la conexión SMTP.
+     * 
+     * @param pCorreo El correo electrónico del usuario que será utilizado para enviar mensajes.
+     */
   public CuentaCorreo(String pCorreo){
     propiedades = new Properties();
     propiedades.put("mail.smtp.host",servidor);
@@ -44,10 +46,10 @@ public class CuentaCorreo{
   }
   
     /**
-   * Crea y retorna una sesión SMTP utilizando las propiedades y credenciales configuradas.
-   * 
-   * @return Session Una sesión SMTP autenticada.
-   */
+     * Crea y retorna una sesión SMTP utilizando las propiedades y credenciales configuradas.
+     * 
+     * @return Session Una sesión SMTP autenticada.
+     */
   private Session abrirSesion(){
     Session sesion = Session.getInstance(propiedades,
       new javax.mail.Authenticator(){
@@ -59,12 +61,12 @@ public class CuentaCorreo{
   }
   
    /**
-   * Envia un correo electrónico con archivos adjuntos.
-   * 
-   * @param destinatario El correo electrónico del destinatario.
-   * @param archivosAdjuntos Un array de Strings que contiene las rutas de los archivos a adjuntar.
-   * @throws java.io.IOException Si ocurre un error al adjuntar los archivos.
-   */
+     * Envia un correo electrónico con archivos adjuntos.
+     * 
+     * @param destinatario El correo electrónico del destinatario.
+     * @param archivosAdjuntos Un array de Strings que contiene las rutas de los archivos a adjuntar.
+     * @throws java.io.IOException Si ocurre un error al adjuntar los archivos.
+     */
   public void enviarCorreo(String destinatario, String[] archivosAdjuntos) throws java.io.IOException {
     Session sesion = abrirSesion();
 

@@ -12,10 +12,12 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
 /**
- * Write a description of class Carton here.
+ * La clase Carton representa un cartón de bingo con sus respectivas filas y números.
+ * Cada cartón tiene un identificador único y cinco filas correspondientes a las letras B, I, N, G, O.
+ * Además, cada cartón tiene un estado que puede ser RESERVADO o LIBRE.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Daniel Arce, Andrea Alemán y Joustin Montenegro
+ * @version 16/10/2023
  */
 public final class Carton
 {
@@ -27,11 +29,16 @@ public final class Carton
     private final ArrayList<Integer> filaO;
     private EstadoCarton estado; // Campo de estado como una enumeración
 
-    // Enumeración para los estados posibles
+    /**
+     * Enumeración que representa los estados posibles de un cartón.
+     */
     public enum EstadoCarton {
         RESERVADO, LIBRE
     }
-    
+    /**
+     * Constructor por defecto de la clase Carton.
+     * Inicializa el cartón con un identificador único y rellena las filas con números aleatorios.
+     */
     public Carton() {
         idCarton = generarIdentificador() ;
         filaB = new ArrayList<>();
@@ -48,7 +55,9 @@ public final class Carton
         
         estado = EstadoCarton.LIBRE;
     }
-    
+    /**
+     * Rellena la fila B con cinco números aleatorios entre 1 y 15.
+     */
     public void rellenarFilaB() {
         // Crea una instancia de Random para generar números aleatorios
         Random random = new Random();
@@ -122,7 +131,10 @@ public final class Carton
             }
         }
     }
-    
+    /**
+     * Genera un identificador único para el cartón compuesto por tres letras seguidas de tres números.
+     * @return String que representa el identificador único.
+     */
     public static String generarIdentificador() {
         // Caracteres alfanuméricos permitidos
         String letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -145,7 +157,9 @@ public final class Carton
 
         return identificador.toString();
     }
-    
+    /**
+     * Imprime el cartón en una imagen con las filas y números correspondientes.
+     */
     public void imprimirCarton(){
         BufferedImage image = new BufferedImage(700, 700, BufferedImage.TYPE_INT_RGB);
         Graphics2D g = image.createGraphics();

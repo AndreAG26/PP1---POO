@@ -16,13 +16,17 @@ import proyecto1.logicadenegocios.Juego;
 import proyecto1.logicadenegocios.Jugador;
 
 /**
- *
- * @author Daniel
+ * La clase verCarton proporciona una interfaz gráfica para visualizar cartones de bingo.
+ * La interfaz permite a los usuarios seleccionar un cartón por su código y visualizarlo.
+ * Además, muestra a qué jugador pertenece el cartón seleccionado.
+ * 
+ * @author Daniel Arce, Andrea Alemán y Joustin Montenegro
+ * @version 16/10/2023
  */
 public class verCarton extends javax.swing.JFrame {
 
     /**
-     * Creates new form verCarton
+     * Constructor por defecto que inicializa los componentes de la interfaz.
      */
     public verCarton() {
         initComponents();
@@ -162,13 +166,23 @@ public class verCarton extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Método que se ejecuta al hacer clic en el botón "Regresar".
+     * Cierra la ventana actual y regresa a la ventana anterior.
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         enviarCartones volver = new enviarCartones();
         volver.setVisible(true);
         this.setVisible(false);             
     }//GEN-LAST:event_jButton2ActionPerformed
     public static Juego juego;
+    /**
+     * Método para cargar los IDs de los cartones en el JComboBox.
+     * Accede a la carpeta de cartones, lista sus archivos y filtra aquellos con extensión .jpg.
+     * Luego, extrae el nombre del archivo (sin la extensión) y lo agrega al JComboBox.
+     * @param juegoEnCurso
+     * @return 
+     */
     public Juego cargarDatos(Juego juegoEnCurso){
         juego=juegoEnCurso;
         return juegoEnCurso;
@@ -178,7 +192,11 @@ public class verCarton extends javax.swing.JFrame {
     
     
     
-    
+    /**
+     * Método que se ejecuta al hacer clic en el botón "Ver".
+     * Obtiene el ID seleccionado del JComboBox, construye la ruta de la imagen correspondiente,
+     * carga y muestra la imagen en el panel. Además, muestra el nombre del jugador dueño del cartón.
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // 1. Obtener el ID seleccionado del JComboBox
         String idSeleccionado = (String) jComboBox1.getSelectedItem();
@@ -216,18 +234,28 @@ public class verCarton extends javax.swing.JFrame {
         String nombreJugador = jugadorDueno.getNombreCompleto();
         jLabel5.setText(nombreJugador);
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    /**
+     * Método que se ejecuta al seleccionar un elemento del JComboBox.
+     * Actualmente no tiene una implementación específica.
+     */
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
                // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
-
+    /**
+     * Método que se ejecuta al hacer clic en el botón "Cargar códigos".
+     * Llama al método cargarIDsEnComboBox para actualizar la lista de códigos en el JComboBox.
+     */
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         cargarIDsEnComboBox(); 
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
     
-    
+    /**
+     * Método para cargar los IDs de los cartones en el JComboBox.
+     * Accede a la carpeta de cartones, lista sus archivos y filtra aquellos con extensión .jpg.
+     * Luego, extrae el nombre del archivo (sin la extensión) y lo agrega al JComboBox.
+     */
     private void cargarIDsEnComboBox() {
         // 1. Acceder a la carpeta y listar sus archivos
         File carpeta = new File("/Users/Daniel/Documents/GitHub/PP1---POO/Proyecto1-Bingo/src/Cartones/");
@@ -246,14 +274,10 @@ public class verCarton extends javax.swing.JFrame {
     }
     
     
-    
-    
-    
-    
-    
-    
     /**
-     * @param args the command line arguments
+     * Método principal para ejecutar la aplicación.
+     * 
+     * @param args Argumentos de línea de comando.
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -281,6 +305,7 @@ public class verCarton extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            
             public void run() {
                 new verCarton().setVisible(true);
             }

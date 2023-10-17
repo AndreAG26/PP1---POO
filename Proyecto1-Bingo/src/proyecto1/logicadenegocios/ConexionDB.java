@@ -8,12 +8,19 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- *
- * @author Dell
+ * La clase ConexionDB se encarga de gestionar la conexión a la base de datos SQLite.
+ * Proporciona métodos para conectar y desconectar de la base de datos.
+ * 
+ * @author Daniel Arce, Andrea Alemán y Joustin Montenegro
+ * @version 16/10/2023
  */
 public class ConexionDB {
     Connection cx=null;
-
+    /**
+     * Establece una conexión con la base de datos SQLite y la retorna.
+     * 
+     * @return Connection que representa la conexión establecida.
+     */
     public Connection conectar(){
         try {
             Class.forName("org.sqlite.JDBC");
@@ -24,7 +31,9 @@ public class ConexionDB {
         }
         return cx;
     }
-
+     /**
+     * Cierra la conexión establecida con la base de datos SQLite.
+     */
     public void desconectar (){
         try {
             cx.close();
@@ -33,10 +42,5 @@ public class ConexionDB {
             e.printStackTrace();
         }
     }
-    /*
-    public static void main(String[] args){
-        ConexionDB cx=new ConexionDB();
-        cx.conectar();
-        cx.desconectar();
-    }*/
+
 }

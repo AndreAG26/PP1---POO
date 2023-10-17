@@ -8,8 +8,13 @@ import java.io.File;
 import proyecto1.logicadenegocios.Juego;
 
 /**
- *
- * @author Daniel
+ * Esta clase representa un formulario GUI para generar cartones de bingo.
+ * Proporciona una interfaz para que el usuario especifique la cantidad de cartones de bingo que desea generar.
+ * Luego, el usuario puede generar la cantidad especificada de cartones de bingo o regresar a la pantalla anterior.
+ * Además, la clase proporciona funcionalidad para eliminar cualquier archivo de cartón de bingo existente.
+ * 
+ * @author Daniel Arce, Andrea Alemán y Joustin Montenegro
+ * @version 16/10/2023
  */
 public class GenerarCartones extends javax.swing.JFrame {
     
