@@ -8,6 +8,7 @@ package proyecto1.bingo;
 import java.util.List;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
+import java.io.File;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -183,9 +184,22 @@ public class Top10Numeros extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        index a = new index();
-        a.setVisible(true);
-        this.setVisible(false);
+        index volver = new index();
+        volver.setVisible(true);
+        this.setVisible(false);        
+
+        // Dirección de la carpeta
+        File carpeta = new File("C:/Users/Daniel/Documents/GitHub/PP1---POO/Proyecto1-Bingo/src/Cartones/");
+
+        // Lista de todos los archivos JPG en la carpeta
+        File[] archivosJPG = carpeta.listFiles((dir, name) -> name.toLowerCase().endsWith(".jpg"));
+
+        // Si hay archivos JPG, eliminarlos
+        if (archivosJPG != null) {
+            for (File archivo : archivosJPG) {
+                archivo.delete();
+            }
+        }    
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

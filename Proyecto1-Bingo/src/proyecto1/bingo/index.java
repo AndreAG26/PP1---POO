@@ -41,8 +41,6 @@ public class index extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         IniciarJuegoBT = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        generarCartones = new javax.swing.JMenu();
-        verCarton = new javax.swing.JMenuItem();
         IniciarJuego = new javax.swing.JMenu();
         estadisticas = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -75,22 +73,6 @@ public class index extends javax.swing.JFrame {
             }
         });
 
-        generarCartones.setText("Cartones");
-        generarCartones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                generarCartonesActionPerformed(evt);
-            }
-        });
-
-        verCarton.setText("Ver cartones");
-        verCarton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verCartonActionPerformed(evt);
-            }
-        });
-        generarCartones.add(verCarton);
-
-        jMenuBar1.add(generarCartones);
         jMenuBar1.add(IniciarJuego);
 
         estadisticas.setText("Estadísticas");
@@ -162,12 +144,6 @@ public class index extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void verCartonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verCartonActionPerformed
-        verCarton verCartonesForm = new verCarton();
-        verCartonesForm.setVisible(true);
-        this.setVisible(false);  
-    }//GEN-LAST:event_verCartonActionPerformed
-
     private void IniciarJuegoBTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IniciarJuegoBTActionPerformed
         
         // La carpeta no está vacía
@@ -187,10 +163,6 @@ public class index extends javax.swing.JFrame {
         a.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_registrarActionPerformed
-
-    private void generarCartonesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generarCartonesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_generarCartonesActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         Top10Numeros a = new Top10Numeros();
@@ -244,7 +216,6 @@ public class index extends javax.swing.JFrame {
     private javax.swing.JMenu IniciarJuego;
     private javax.swing.JButton IniciarJuegoBT;
     private javax.swing.JMenu estadisticas;
-    private javax.swing.JMenu generarCartones;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -257,7 +228,6 @@ public class index extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JMenuItem registrar;
-    private javax.swing.JMenuItem verCarton;
     private javax.swing.JMenu wordCloud;
     // End of variables declaration//GEN-END:variables
 }

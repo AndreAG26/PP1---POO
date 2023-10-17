@@ -4,6 +4,15 @@
  */
 package proyecto1.bingo;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import static proyecto1.bingo.enviarCartones.juego;
+import proyecto1.logicadenegocios.Carton;
+import proyecto1.logicadenegocios.Juego;
+import proyecto1.logicadenegocios.Jugador;
+
 /**
  *
  * @author Daniel
@@ -15,6 +24,26 @@ public class JuegoEnCursoJFrame extends javax.swing.JFrame {
      */
     public JuegoEnCursoJFrame() {
         initComponents();
+    }
+    
+    
+    public static Juego juego;
+    
+    
+    public Juego cargarDatos(Juego juegoEnCurso,String tipoJuego, int premio){
+        
+        jLabel2.setText(tipoJuego);
+        jLabel4.setText(""+premio);
+        ArrayList<Carton> cartonesTotales = juegoEnCurso.getCartones();
+        int total=cartonesTotales.size();
+        String totalString = String.valueOf(total);
+        List<Jugador> jugadoresTotales = juegoEnCurso.getJugadores();
+        int totalJUG=jugadoresTotales.size();
+        String JG = String.valueOf(totalJUG);
+        totalCartones.setText(totalString);
+        totalJugadores.setText(JG);
+        juego=juegoEnCurso;
+        return juegoEnCurso;
     }
 
     /**
@@ -30,8 +59,18 @@ public class JuegoEnCursoJFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        cantarNumero = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        totalCartones = new javax.swing.JLabel();
+        totalJugadores = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        bolitasSacadas = new javax.swing.JTextArea();
+        terminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setText("Tipo de juego:");
 
@@ -41,20 +80,76 @@ public class JuegoEnCursoJFrame extends javax.swing.JFrame {
 
         jLabel4.setText(" ");
 
+        cantarNumero.setText("Jugar!");
+        cantarNumero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cantarNumeroActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Números cantados:");
+
+        jLabel7.setText("Total cartones:");
+
+        jLabel8.setText("Total de jugadores:");
+
+        totalCartones.setText(" ");
+
+        totalJugadores.setText(" ");
+
+        bolitasSacadas.setColumns(20);
+        bolitasSacadas.setRows(5);
+        jScrollPane1.setViewportView(bolitasSacadas);
+
+        terminar.setText("Terminar");
+        terminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                terminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(114, 114, 114)
+                                .addComponent(cantarNumero)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(90, 90, 90)
-                .addComponent(jLabel3)
+                .addComponent(totalCartones, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addComponent(totalJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(terminar)
+                .addGap(133, 133, 133))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -65,11 +160,116 @@ public class JuegoEnCursoJFrame extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4))
-                .addContainerGap(264, Short.MAX_VALUE))
+                .addGap(45, 45, 45)
+                .addComponent(cantarNumero)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8)
+                    .addComponent(totalCartones)
+                    .addComponent(totalJugadores))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(terminar)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cantarNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantarNumeroActionPerformed
+        String modoJuego = jLabel2.getText(); // Obtener el texto del jLabel2
+
+        if (null != modoJuego) switch (modoJuego) {
+            case "Jugar en x" -> {
+                String idCartonGanador = juego.jugarHastaX();
+                Jugador jugadorGanador = juego.encontrarJugadorPorIDCarton(idCartonGanador);
+                ArrayList<Integer> bolitas = juego.getBolitasSacadas();
+                String bolitasString = String.valueOf(bolitas);
+                bolitasSacadas.setEditable(false);
+                bolitasSacadas.setWrapStyleWord(true);
+                bolitasSacadas.setLineWrap(true);
+                bolitasSacadas.setText(bolitasString);
+                if (jugadorGanador != null) {
+                    JOptionPane.showMessageDialog(null,"¡El ganador es " + jugadorGanador.getNombreCompleto() + "! Con el cartón con código "+idCartonGanador);}
+                else {
+                    JOptionPane.showMessageDialog(null, "El Carton no esta asigado" );
+                    
+                }  
+            }
+            case "Jugar en z" -> {
+                String idCartonGanador = juego.jugarHastaZ();
+                Jugador jugadorGanador = juego.encontrarJugadorPorIDCarton(idCartonGanador);
+                ArrayList<Integer> bolitas = juego.getBolitasSacadas();
+                String bolitasString = String.valueOf(bolitas);
+                bolitasSacadas.setEditable(false);
+                bolitasSacadas.setWrapStyleWord(true);
+                bolitasSacadas.setLineWrap(true);
+                bolitasSacadas.setText(bolitasString);
+                if (jugadorGanador != null) {
+                    JOptionPane.showMessageDialog(null,"¡El ganador es " + jugadorGanador.getNombreCompleto() + "! Con el cartón con código "+idCartonGanador);}
+                else {
+                    JOptionPane.showMessageDialog(null, "El Carton no esta asigado" );
+                }
+            }
+            case "Cuatro esquinas" -> {
+                String idCartonGanador = juego.jugarHastaCuatroEsquinas();
+                Jugador jugadorGanador = juego.encontrarJugadorPorIDCarton(idCartonGanador);
+                ArrayList<Integer> bolitas = juego.getBolitasSacadas();
+                String bolitasString = String.valueOf(bolitas);
+                bolitasSacadas.setEditable(false);
+                bolitasSacadas.setWrapStyleWord(true);
+                bolitasSacadas.setLineWrap(true);
+                bolitasSacadas.setText(bolitasString);
+                if (jugadorGanador != null) {
+                    JOptionPane.showMessageDialog(null,"¡El ganador es " + jugadorGanador.getNombreCompleto() + "! Con el cartón con código "+idCartonGanador);}
+                else {
+                    JOptionPane.showMessageDialog(null, "El Carton no esta asigado" );
+                }
+            }
+            case "Cartón lleno" -> {
+                String idCartonGanador = juego.jugarHastaLleno();
+                Jugador jugadorGanador = juego.encontrarJugadorPorIDCarton(idCartonGanador);
+                ArrayList<Integer> bolitas = juego.getBolitasSacadas();
+                String bolitasString = String.valueOf(bolitas);
+                bolitasSacadas.setEditable(false);
+                bolitasSacadas.setWrapStyleWord(true);
+                bolitasSacadas.setLineWrap(true);
+                bolitasSacadas.setText(bolitasString);
+                if (jugadorGanador != null) {
+                    JOptionPane.showMessageDialog(null,"¡El ganador es " + jugadorGanador.getNombreCompleto() + "! Con el cartón con código "+idCartonGanador);}
+                else {
+                    JOptionPane.showMessageDialog(null, "El Carton no esta asigado" );
+                }
+            }
+        }
+
+        
+
+        
+    }//GEN-LAST:event_cantarNumeroActionPerformed
+
+    private void terminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_terminarActionPerformed
+        index volver = new index();
+        volver.setVisible(true);
+        this.setVisible(false);        
+
+        // Dirección de la carpeta
+        File carpeta = new File("C:/Users/Daniel/Documents/GitHub/PP1---POO/Proyecto1-Bingo/src/Cartones/");
+
+        // Lista de todos los archivos JPG en la carpeta
+        File[] archivosJPG = carpeta.listFiles((dir, name) -> name.toLowerCase().endsWith(".jpg"));
+
+        // Si hay archivos JPG, eliminarlos
+        if (archivosJPG != null) {
+            for (File archivo : archivosJPG) {
+                archivo.delete();
+            }
+        }    
+    }//GEN-LAST:event_terminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -107,9 +307,18 @@ public class JuegoEnCursoJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea bolitasSacadas;
+    private javax.swing.JButton cantarNumero;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton terminar;
+    private javax.swing.JLabel totalCartones;
+    private javax.swing.JLabel totalJugadores;
     // End of variables declaration//GEN-END:variables
 }

@@ -315,6 +315,29 @@ public class Juego {
     }
 
     
+    public String jugarHastaX() {
+        while (!verificarBingoEnX() ) {
+            sacarBolita();
+        }
+
+        return devolverIDX();
+    }
+    
+    public String jugarHastaZ() {
+        while (!verificarBingoEnZ()) {
+            sacarBolita();
+        }
+
+        return devolverIDZ();
+    }
+    
+    public String jugarHastaLleno(){
+        while (!verificarBingoCompleto()) {
+            sacarBolita();
+        }
+        return devolverIDCompleto();
+    }
+    
     public String jugarHastaCuatroEsquinas() {
         
         while (!verificarCuatroEsquinas()) {

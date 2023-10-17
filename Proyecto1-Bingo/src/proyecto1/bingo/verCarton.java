@@ -7,10 +7,13 @@ package proyecto1.bingo;
 import java.awt.BorderLayout;
 import java.awt.Image;
 import java.io.File;
+import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import proyecto1.logicadenegocios.Juego;
+import proyecto1.logicadenegocios.Jugador;
 
 /**
  *
@@ -43,6 +46,7 @@ public class verCarton extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         panel1 = new java.awt.Panel();
+        jButton3 = new javax.swing.JButton();
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -76,7 +80,7 @@ public class verCarton extends javax.swing.JFrame {
 
         jLabel3.setText("Pertene a:");
 
-        jLabel5.setText("No asignado");
+        jLabel5.setText(" ");
 
         javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
         panel1.setLayout(panel1Layout);
@@ -89,11 +93,21 @@ public class verCarton extends javax.swing.JFrame {
             .addGap(0, 162, Short.MAX_VALUE)
         );
 
+        jButton3.setText("Cargar códigos");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 521, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(329, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(81, 81, 81))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -121,7 +135,10 @@ public class verCarton extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 310, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jButton3)
+                .addContainerGap(255, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(1, 1, 1)
@@ -147,14 +164,25 @@ public class verCarton extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        index volver = new index();
+        enviarCartones volver = new enviarCartones();
         volver.setVisible(true);
-        this.setVisible(false);        
+        this.setVisible(false);             
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    public static Juego juego;
+    public Juego cargarDatos(Juego juegoEnCurso){
+        juego=juegoEnCurso;
+        return juegoEnCurso;
+    }
+    
+    
+    
+    
+    
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // 1. Obtener el ID seleccionado del JComboBox
         String idSeleccionado = (String) jComboBox1.getSelectedItem();
+
 
         // 2. Construir la ruta completa de la imagen
         String rutaImagen = "C:/Users/Daniel/Documents/GitHub/PP1---POO/Proyecto1-Bingo/src/Cartones/" + idSeleccionado + ".jpg";
@@ -180,14 +208,23 @@ public class verCarton extends javax.swing.JFrame {
             // Validar y repintar el panel para asegurarse de que la imagen se muestre correctamente
             panel1.validate();
             panel1.repaint();
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error al cargar la imagen.", "Error", JOptionPane.ERROR_MESSAGE);
         }
+        Jugador jugadorDueno = juego.encontrarJugadorPorIDCarton(idSeleccionado);
+        String nombreJugador = jugadorDueno.getNombreCompleto();
+        jLabel5.setText(nombreJugador);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        cargarIDsEnComboBox();        // TODO add your handling code here:
+               // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        cargarIDsEnComboBox(); 
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     
     
@@ -253,6 +290,7 @@ public class verCarton extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;

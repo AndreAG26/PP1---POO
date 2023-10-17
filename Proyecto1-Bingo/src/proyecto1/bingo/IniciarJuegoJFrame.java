@@ -4,6 +4,9 @@
  */
 package proyecto1.bingo;
 
+import java.io.File;
+import javax.swing.JOptionPane;
+import static proyecto1.bingo.enviarCartones.juego;
 import proyecto1.logicadenegocios.Juego;
 
 /**
@@ -115,10 +118,36 @@ public class IniciarJuegoJFrame extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         index volver = new index();
         volver.setVisible(true);
-        this.setVisible(false);     
+        this.setVisible(false);        
+
+        // Dirección de la carpeta
+        File carpeta = new File("C:/Users/Daniel/Documents/GitHub/PP1---POO/Proyecto1-Bingo/src/Cartones/");
+
+        // Lista de todos los archivos JPG en la carpeta
+        File[] archivosJPG = carpeta.listFiles((dir, name) -> name.toLowerCase().endsWith(".jpg"));
+
+        // Si hay archivos JPG, eliminarlos
+        if (archivosJPG != null) {
+            for (File archivo : archivosJPG) {
+                archivo.delete();
+            }
+        }       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void IniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IniciarActionPerformed
+        String valorSeleccionado = (String) jComboBox1.getSelectedItem();
+        String textoIngresado = textField1.getText();
+        int textoEnInt;
+        try{
+            textoEnInt=Integer.parseInt(textoIngresado);
+            JuegoEnCursoJFrame a = new JuegoEnCursoJFrame();
+            a.cargarDatos(juego,valorSeleccionado,textoEnInt);
+            a.setVisible(true);
+            this.setVisible(false);
+        } catch (NumberFormatException  e){
+            JOptionPane.showMessageDialog(null, "El premio ingresado no es un número válido" + textoIngresado, "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        
         
     }//GEN-LAST:event_IniciarActionPerformed
 
