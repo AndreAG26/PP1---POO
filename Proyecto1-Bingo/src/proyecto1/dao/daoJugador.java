@@ -70,7 +70,7 @@ public class daoJugador {
     /**
      * Método que carga todos los jugadores desde la base de datos.
      * 
-     * @return List<Jugador> Lista de jugadores obtenidos de la base de datos.
+     * @return List Lista de jugadores obtenidos de la base de datos.
      */
     public List<Jugador> cargarJugadores() {
         List<Jugador> jugadores = new ArrayList<>();

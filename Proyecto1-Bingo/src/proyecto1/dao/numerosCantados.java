@@ -92,7 +92,7 @@ public class numerosCantados {
     /**
      * Método que obtiene el top 10 de números cantados en la base de datos.
      * 
-     * @return List<Integer> Lista con los números y sus repeticiones.
+     * @return List Lista con los números y sus repeticiones.
      */
     public List<Integer> top10(){
         Connection connection = null;

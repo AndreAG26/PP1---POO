@@ -62,7 +62,7 @@ public class daoPartida {
     /**
      * Método que obtiene la frecuencia de configuraciones de partidas en la base de datos.
      * 
-     * @return List<String> Lista con la configuración y su frecuencia.
+     * @return List Lista con la configuración y su frecuencia.
      */
     public List<String> frecuenciaConfiPartidas(){
         Connection connection = null;

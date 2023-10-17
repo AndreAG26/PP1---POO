@@ -5,6 +5,7 @@
 package proyecto1.bingo;
 
 import java.io.File;
+import javax.swing.JOptionPane;
 import proyecto1.logicadenegocios.Juego;
 
 /**
@@ -118,13 +119,34 @@ public class GenerarCartones extends javax.swing.JFrame {
     }//GEN-LAST:event_cartonesAGenerarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int cantCartones= Integer.parseInt(cartonesAGenerar.getText());
-        Juego JuegoEnCurso=new Juego();
-        JuegoEnCurso.crearCartones(cantCartones);
-        enviarCartones a = new enviarCartones();
-        a.cargarDatos(JuegoEnCurso);
-        a.setVisible(true);
-        this.setVisible(false);
+            try {
+            // Comprobar si el campo está vacío
+            if (cartonesAGenerar.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Por favor, ingrese un número válido.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            // Intentar convertir el texto a un número entero
+            int cantCartones = Integer.parseInt(cartonesAGenerar.getText());
+
+            // Comprobar si el número es 0 o negativo
+            if (cantCartones <= 0) {
+                JOptionPane.showMessageDialog(this, "El número de cartones debe ser mayor que 0.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            // Continuar con la lógica del juego
+            Juego JuegoEnCurso = new Juego();
+            JuegoEnCurso.crearCartones(cantCartones);
+            enviarCartones a = new enviarCartones();
+            a.cargarDatos(JuegoEnCurso);
+            a.setVisible(true);
+            this.setVisible(false);
+
+        } catch (NumberFormatException e) {
+            // Mostrar un mensaje de error si el texto no es un número válido
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese un número válido.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

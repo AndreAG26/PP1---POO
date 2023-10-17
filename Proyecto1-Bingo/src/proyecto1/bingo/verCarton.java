@@ -199,11 +199,19 @@ public class verCarton extends javax.swing.JFrame {
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // 1. Obtener el ID seleccionado del JComboBox
+        if (jComboBox1.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(this, "No hay ningún ID seleccionado.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         String idSeleccionado = (String) jComboBox1.getSelectedItem();
-
 
         // 2. Construir la ruta completa de la imagen
         String rutaImagen = "C:/Users/Daniel/Documents/GitHub/PP1---POO/Proyecto1-Bingo/src/Cartones/" + idSeleccionado + ".jpg";
+        File archivoImagen = new File(rutaImagen);
+        if (!archivoImagen.exists()) {
+            JOptionPane.showMessageDialog(this, "No hay ningún ID válido selccionado .", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
         // 3. Cargar y mostrar la imagen en el Panel
         try {
@@ -226,11 +234,16 @@ public class verCarton extends javax.swing.JFrame {
             // Validar y repintar el panel para asegurarse de que la imagen se muestre correctamente
             panel1.validate();
             panel1.repaint();
-            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error al cargar la imagen.", "Error", JOptionPane.ERROR_MESSAGE);
         }
+
+        // 4. Mostrar el nombre del jugador dueño del cartón
         Jugador jugadorDueno = juego.encontrarJugadorPorIDCarton(idSeleccionado);
+        if (jugadorDueno == null) {
+            JOptionPane.showMessageDialog(this, "No se encontró el jugador con el ID de cartón especificado.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         String nombreJugador = jugadorDueno.getNombreCompleto();
         jLabel5.setText(nombreJugador);
     }//GEN-LAST:event_jButton1ActionPerformed

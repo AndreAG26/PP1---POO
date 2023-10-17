@@ -2,6 +2,7 @@ package proyecto1.logicadenegocios;
 import java.io.IOException;
 import proyecto1.dao.daoJugador;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -364,6 +365,7 @@ public class Juego {
         cuentaCorreo.enviarCorreo(correo, rutasDeCartones);
 
         if (cartonesAgregados < cantidad) {
+            JOptionPane.showMessageDialog(null, "No se pudieron asignar la cantidad deseada de cartones debido a que algunos están reservados", "Error", JOptionPane.ERROR_MESSAGE);
             System.out.println("No se pudieron asignar la cantidad deseada de cartones debido a que algunos están reservados. Se asignaron " + cartonesAgregados + " cartones.");
         } else {
             System.out.println("Se han asignado " + cartonesAgregados + " cartones al jugador.");

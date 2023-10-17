@@ -172,7 +172,6 @@ public class IniciarJuegoJFrame extends javax.swing.JFrame {
      * Este método se activa cuando el usuario hace clic en el botón "Regresar".
      * Devuelve al usuario a la pantalla anterior y elimina cualquier archivo de cartón de bingo existente.
      * 
-     * @param evt El evento de acción.
      */
     public Juego cargarDatos(Juego juegoEnCurso){
         return juegoEnCurso;
